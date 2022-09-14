@@ -1,0 +1,35 @@
+<h1>Add Supplier</h1>
+Supplier Code
+<input [(ngModel)]="SupplierModel.SupplierCode" type="text" /><br/><br/>
+Supplier Name
+<input [(ngModel)]="SupplierModel.SupplierName" type="text" /><br/><br/>
+Supplier Amount
+<input [(ngModel)]="SupplierModel.SupplierAmount" type="number" /><br/><br/>
+<input type="button" value="Add Supplier" (click)="Add()" />
+<br/><br/>
+<h2>Supplier List</h2>
+<!--
+ ()=>event binding
+ []=>property binding
+ [()]=>2 way bindings
+-->
+
+<!-- {{SupplierModel.SupplierName}} -->
+
+<!-- <img [src]="imageURL" /> -->
+
+<!-- <table>
+    <tr>
+        <td>Supplier Code</td>
+        <td>Supplier Name</td>
+        <td>Supplier Amount</td>
+        <td>Actions</td>
+    </tr>
+    <tr *ngFor="let cust of SupplierModels">
+        <td>{{cust.SupplierCode}}</td>
+        <td>{{cust.SupplierName}}</td>
+        <td>{{cust.SupplierAmount}}</td>
+    </tr>
+</table> -->
+
+<app-grid-ui   [grid-columns]="[{'colName':'id'},{'colName':'SupplierCode'},{'colName':'SupplierName'},{'colName':'SupplierAmount'}]" [grid-data]="SupplierModels" ></app-grid-ui>

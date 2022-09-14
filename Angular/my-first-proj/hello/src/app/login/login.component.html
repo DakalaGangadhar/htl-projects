@@ -1,0 +1,67 @@
+<p>login works!</p>
+
+<input [(ngModel)]="twbName" type="text">
+{{twbName}}
+
+
+<p *ngIf="isDisable; then thenBlock else notTrue"> A Is Greater Than B <p>
+    <ng-template #notTrue>
+      <p> B Is Greater Than A </p>
+    </ng-template>
+    <ng-template #thenBlock>
+        <p> c Is Greater </p>
+      </ng-template>    
+ 
+      <div [ngSwitch]="color">
+        <p *ngSwitchCase="'red'">Red color</p>
+        <p *ngSwitchCase="'blue'">Blue color</p>
+        <p *ngSwitchCase="'green'">Green color</p>
+        <p *ngSwitchCase="'orang'">Orange color</p>
+        <p *ngSwitchDefault>something wrong</p>
+    </div>
+    <div *ngFor="let colordata of colors;index as i">
+        <li>{{i}}     {{colordata}}</li>
+    </div>
+
+<h1 *ngIf="true">H & T Learning</h1>
+ 
+ <h2>{{twbName|uppercase}}</h2>
+
+ <input type="text" #mydata>
+ <input type="button" (click)="show(mydata.value)" value="Submit">
+ <img [src]="image">
+
+ <br>
+ Customer Name
+ <input [(ngModel)]="CustomerModel.CustomerName" type="text">
+ <input type="button" value="Submit" (click)="shows()">
+ {{CustomerModel.CustomerName}}
+
+<br>
+<br>
+ Customer code
+ <input [(ngModel)]="CustomerModel.CustomerCode" type="text">
+ Customer Name
+ <input [(ngModel)]="CustomerModel.CustomerName" type="text">
+ Customer Number
+ <input [(ngModel)]="CustomerModel.CustomerNumber" type="text">
+ <input type="button" value="Add Customer" (click)="Add()">
+
+ <table>
+    <tr>
+      <th>SNO</th>
+      <th>Customer Code</th>
+      <th>Customer Name</th>
+      <th>Customer Number</th>
+      <th>Action</th>
+    </tr>
+      
+   <tbody>
+     <tr *ngFor="let cust of CustomerModels; index as i">
+      <td>{{i+1}}</td>
+       <td>{{cust.CustomerCode}}</td>
+       <td>{{cust.CustomerName}}</td>
+       <td>{{cust.CustomerNumber}}</td>
+     </tr>
+   </tbody>
+ </table>

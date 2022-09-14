@@ -1,0 +1,9 @@
+{
+"customers":[
+    {"CustomerCode":"07", "CustomerName":"G", "CustomerAmount":10000},
+{"CustomerCode":"786", "CustomerName":"D", "CustomerAmount":10002},
+{"CustomerCode":"09", "CustomerName":"A", "CustomerAmount":10003},
+{"CustomerCode":"0786", "CustomerName":"G", "CustomerAmount":10004},
+{"CustomerCode":"12", "CustomerName":"G", "CustomerAmount":10005},
+{"CustomerCode":"1001", "CustomerName":"G", "CustomerAmount":1000045}
+]

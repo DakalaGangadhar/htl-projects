@@ -1,0 +1,35 @@
+<!--
+<table>
+    <tr>
+        <td>Customer Code</td>
+        <td>Customer Name</td>
+        <td>Customer Amount</td>
+        <td>Actions</td>
+    </tr>
+   
+     <tr *ngFor="let cust of CustomerModels">
+        <td>{{cust.CustomerCode}}</td>
+        <td>{{cust.CustomerName}}</td>
+        <td>{{cust.CustomerAmount}}</td>
+    </tr>
+</table>-->
+<p>hi</p>
+<table>
+    <tr>
+        <th *ngFor="let col of gridColumns">
+            {{col.colName}}
+            </th>
+    </tr>
+    <tr *ngFor="let colObj of gridData">
+       <td *ngFor="let col of gridColumns">
+        {{colObj[col.colName]}}
+        </td>
+        <td>
+            <a (click)="selectedGrid(colObj)" class="btn btn-primary">Edit</a>
+            </td>
+       <td>
+                <a (click)="deleteGrid(colObj)" class="btn btn-primary">Delete</a>
+                </td>
+                
+    </tr>
+</table>

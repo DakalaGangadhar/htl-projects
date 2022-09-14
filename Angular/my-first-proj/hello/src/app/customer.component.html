@@ -1,0 +1,17 @@
+<h1>Ganesha</h1>
+<input type="text" id="txtUsername" value="Ganesha">
+<br>
+<input type="text" placeholder="Enter Name" #txtName>
+<br>
+<button (click)="eventSubmit(txtName.value)">Submit</button>
+<label>{{lalvalue}}</label>
+<br>
+<label class="lblText">{{windows}}</label>
+<br>
+<label [class]="textclass">My first project</label>
+<br>
+<input id="myId" type="text" value="H&T Learning">
+<br>
+<input [(ngModel)]="name" type="text" placeholder="Two way binding">
+{{name}}
+<app-login></app-login>

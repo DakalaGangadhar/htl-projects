@@ -1,0 +1,34 @@
+{
+  "customers": [
+    {
+      "CustomerCode": "1001",
+      "CustomerName": "Ganesha",
+      "CustomerAmount": "322",
+      "id": 2
+    },
+    {
+      "CustomerCode": "1001",
+      "CustomerName": "Ganesha",
+      "CustomerAmount": "322",
+      "id": 6
+    },
+    {
+      "CustomerCode": "1001",
+      "CustomerName": "Ganesha",
+      "CustomerAmount": "322",
+      "id": "exEZW-B"
+    },
+    {
+      "CustomerCode": "12",
+      "CustomerName": "gg",
+      "CustomerAmount": "77",
+      "id": "HeCH60O"
+    },
+    {
+      "id": "ccqz1tT",
+      "CustomerCode": "12",
+      "CustomerName": "GG",
+      "CustomerAmount": "1233"
+    }
+  ]
+}
