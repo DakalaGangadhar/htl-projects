@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "rc8OANPfG0VPwfioWe3C6RGH7U4sw1dpjWiZKsLr+mPOWIJlLK42ijJLW06JHjJiY58JGBK90bZH5l4maLew7w==",
+  "dgSpecHash": "3VVB7bhMo163oPXFSOsLFbT6aUB6CnAYUpUy+/ZMGny4DO0xbMfo2K1/vPsr+72jymJIJSiRiUr7X0TxEL+eqQ==",
   "success": true,
   "projectFilePath": "D:\\H_T_L\\Webapi\\webapi\\webapi\\webapi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cogdotnet1697\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\cogdotnet1697\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.29\\microsoft.aspnetcore.authentication.jwtbearer.3.1.29.nupkg.sha512",
     "C:\\Users\\cogdotnet1697\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\cogdotnet1697\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\cogdotnet1697\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

@@ -1,11 +1,11 @@
 <h1>G</h1>
 <h1>Add Customer</h1>
 Customer Code
-<input [(ngModel)]="CustomerModel.CustomerCode" type="text" /><br/><br/>
+<input [(ngModel)]="CustomerModel.customerCode" type="text" /><br/><br/>
 Customer Name
-<input [(ngModel)]="CustomerModel.CustomerName" type="text" /><br/><br/>
+<input [(ngModel)]="CustomerModel.customerName" type="text" /><br/><br/>
 Customer Amount
-<input [(ngModel)]="CustomerModel.CustomerAmount" type="text" /><br/><br/>
+<input [(ngModel)]="CustomerModel.customerAmount" type="text" /><br/><br/>
 <input type="button" value="Add Customer" (click)="Add()" />
 <br/><br/>
 <h2>Customer List</h2>
@@ -32,6 +32,6 @@ Customer Amount
         <td>{{cust.CustomerAmount}}</td>
     </tr>
 </table>-->
-<app-grid-ui  [grid-columns]="[{'colName':'id'},{'colName':'CustomerCode'},{'colName':'CustomerName'},{'colName':'CustomerAmount'}]"
+<app-grid-ui  [grid-columns]="[{'colName':'id'},{'colName':'customerCode'},{'colName':'customerName'},{'colName':'customerAmount'}]"
 [grid-data]="CustomerModels"  (grid-selected)="EditCustomer($event)" (grid-deleted)="DeleteCustomer($event)"
 ></app-grid-ui>

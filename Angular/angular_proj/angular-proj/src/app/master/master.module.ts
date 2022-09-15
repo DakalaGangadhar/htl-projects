@@ -6,17 +6,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Mainroutes } from '../routing/mainroutes';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from '../login/login/login.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    MasterComponent
+    MasterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(Mainroutes)
+    RouterModule.forRoot(Mainroutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [MasterComponent]

@@ -7,10 +7,12 @@ import { CustomerComponent } from './customer.component';
 import { customerroutes } from './routing/customerroutes';
 import { GridUiModule } from './utilites/grid-ui.module';
 import {HttpClientModule} from '@angular/common/http';
+import { RegisterComponent } from './register/register/register.component';
 
 @NgModule({
   declarations: [
-    CustomerComponent
+    CustomerComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,

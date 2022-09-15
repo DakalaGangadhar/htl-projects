@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace webapi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CustomerController : ControllerBase
     {
         customerDBContext db = new customerDBContext();
@@ -49,6 +51,11 @@ namespace webapi.Controllers
             var res = new { status = "Success" };
             return Ok();
         }
+        //[HttpGet]
+        //public Customer GetDataByID([FromQuery] int custId)
+        //{
+        //    return db.Customers.Where(i => i.Id == custId).FirstOrDefault();             
+        //}
 
     }
 }

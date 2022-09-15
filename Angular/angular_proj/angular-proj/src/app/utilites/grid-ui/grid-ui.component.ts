@@ -18,7 +18,7 @@ export class GridUiComponent implements OnInit {
     this.gridColumns=_gridColumn;
   }
   @Input("grid-data")
-  set SetGridData(_griddata:Array<any>){
+  set SetGridData(_griddata:Array<any>){    
     this.gridData=_griddata;
   }
   @Output("grid-selected")

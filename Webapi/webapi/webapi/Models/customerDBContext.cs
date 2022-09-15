@@ -18,6 +18,7 @@ namespace webapi.Models
         }
 
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Login> Logins { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -39,6 +40,17 @@ namespace webapi.Models
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.CustomerAmount).HasColumnType("money");
+            });
+
+            modelBuilder.Entity<Login>(entity =>
+            {
+                entity.ToTable("login");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Password).HasColumnName("password");
+
+                entity.Property(e => e.Username).HasColumnName("username");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -1,0 +1,13 @@
+<h1>Add Supplier</h1>
+Supplier Code
+<input [(ngModel)]="AuthorModel.SupplierCode" type="text" /><br/><br/>
+Supplier Name
+<input [(ngModel)]="AuthorModel.SupplierName" type="text" /><br/><br/>
+Supplier Amount
+<input [(ngModel)]="AuthorModel.SupplierAmount" type="number" /><br/><br/>
+<input type="button" value="Add Supplier" (click)="Add()" />
+<br/><br/>
+<h2>Supplier List</h2>
+
+
+<app-grid-ui   [grid-columns]="[{'colName':'id'},{'colName':'SupplierCode'},{'colName':'SupplierName'},{'colName':'SupplierAmount'}]" [grid-data]="AuthorModels" ></app-grid-ui>

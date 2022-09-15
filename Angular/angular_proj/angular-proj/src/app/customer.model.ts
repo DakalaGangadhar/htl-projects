@@ -1,6 +1,7 @@
 export class Customer{
     id:any='';
-    CustomerCode:string='';
-    CustomerName:string='';
-    CustomerAmount:number=0;
+    customerCode:string='';
+    customerName:string='';
+    customerAmount:number=0;
+    isEdit:boolean=false;
 }
