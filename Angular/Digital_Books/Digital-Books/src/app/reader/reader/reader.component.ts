@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ReaderModel } from 'src/app/models/ReaderModel';
 
 @Component({
@@ -11,25 +12,16 @@ export class ReaderComponent implements OnInit {
 
   ReaderModel:ReaderModel=new ReaderModel();
   ReaderModels:Array<ReaderModel>=new Array<ReaderModel>();
-  public url = "https://localhost:5001/api/customer";
+  public url = "https://localhost:44330/api/UserData";
   public id_data:string='';
   public isEdit=false;
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private _router:Router) { }
 
   ngOnInit(): void {
     this.GetDataFromServer();
   }
-  Add(){
-   
-    // console.log('HI');
-    // alert('HI');
-  
-    //this.CustomerModels.push(this.CustomerModel);
-    //console.log(this.CustomerModels);
-    //this.CustomerModel=new Customer();
-
-    //this.http.post(this.url,this.CustomerModel).subscribe(res=>this.PostSuccess(res),res=>console.log(res))
-    //this.CustomerModel = new Customer();
+  Add(){   
+    
     if(this.isEdit){
       this.http.put(this.url,this.ReaderModel).subscribe(res=>this.PostSuccess(res),res=>console.log(res))
     }
@@ -40,7 +32,9 @@ export class ReaderComponent implements OnInit {
         this.ReaderModel = new ReaderModel();
       
   }
+  
   GetDataFromServer(){
+    this.ReaderModel;
     this.http.get(this.url).subscribe(res=>this.Success(res),res=>console.log(res));
  
   }
@@ -63,6 +57,9 @@ export class ReaderComponent implements OnInit {
   }
   Success(input:any){
     this.ReaderModel=input;
+  }
+  readerLogin(){
+    this._router.navigate(['reader/add']);
   }
 
 }

@@ -1,13 +1,21 @@
-<h1>Add Supplier</h1>
-Supplier Code
-<input [(ngModel)]="AuthorModel.SupplierCode" type="text" /><br/><br/>
-Supplier Name
-<input [(ngModel)]="AuthorModel.SupplierName" type="text" /><br/><br/>
-Supplier Amount
-<input [(ngModel)]="AuthorModel.SupplierAmount" type="number" /><br/><br/>
-<input type="button" value="Add Supplier" (click)="Add()" />
+<h1>Create Books</h1>
+Title
+<input [(ngModel)]="AuthorModel.title" type="text" /><br/><br/>
+Catogory
+<input [(ngModel)]="AuthorModel.category" type="text" /><br/><br/>
+Image
+<input [(ngModel)]="AuthorModel.image" type="text" /><br/><br/>
+Price
+<input [(ngModel)]="AuthorModel.price" type="text" /><br/><br/>
+Publisher
+<input [(ngModel)]="AuthorModel.publisher" type="number" /><br/><br/>
+Active
+<input [(ngModel)]="AuthorModel.active" type="number" /><br/><br/>
+Content
+<input [(ngModel)]="AuthorModel.content" type="number" /><br/><br/>
+<input type="button" value="Create Books" (click)="Add()" />
 <br/><br/>
 <h2>Supplier List</h2>
 
 
-<app-grid-ui   [grid-columns]="[{'colName':'id'},{'colName':'SupplierCode'},{'colName':'SupplierName'},{'colName':'SupplierAmount'}]" [grid-data]="AuthorModels" ></app-grid-ui>
+<app-grid-ui   [grid-columns]="[{'colName':'id'},{'colName':'title'},{'colName':'category'},{'colName':'image'},{'colName':'price'},{'colName':'publisher'},{'colName':'active'},{'colName':'content'}]" [grid-data]="AuthorModels" ></app-grid-ui>

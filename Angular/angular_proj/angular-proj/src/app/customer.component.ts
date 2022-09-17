@@ -15,6 +15,9 @@ export class CustomerComponent {
   public url = "https://localhost:5001/api/customer";
   public id_data:string='';
   public isEdit=false;
+  public customerNameValivation='';
+  public customercodeValivation='';
+  public customeramountValivation='';
   constructor(private http:HttpClient ){
 
   }
@@ -27,16 +30,23 @@ export class CustomerComponent {
       this.CustomerModels=input;
     }
   Add(){
+    if(this.CustomerModel.customerName==null || this.CustomerModel.customerName==""){
+      this.customerNameValivation="In valide";
+    }else{
+      this.customerNameValivation="valide";
+    }
+    if(this.CustomerModel.customerCode==null || this.CustomerModel.customerCode==""){
+      this.customercodeValivation="In valide";
+    }else{
+      this.customercodeValivation="valide";
+    }
+    if(this.CustomerModel.customerAmount==null || this.CustomerModel.customerAmount==0){
+      this.customeramountValivation="In valide";
+    }else{
+      this.customeramountValivation="valide";
+    }
    
-    // console.log('HI');
-    // alert('HI');
-  
-    //this.CustomerModels.push(this.CustomerModel);
-    //console.log(this.CustomerModels);
-    //this.CustomerModel=new Customer();
-
-    //this.http.post(this.url,this.CustomerModel).subscribe(res=>this.PostSuccess(res),res=>console.log(res))
-    //this.CustomerModel = new Customer();
+    
     if(this.isEdit){
       this.http.put(this.url,this.CustomerModel).subscribe(res=>this.PostSuccess(res),res=>console.log(res))
     }

@@ -1,12 +1,18 @@
 <h1>G</h1>
 <h1>Add Customer</h1>
-Customer Code
-<input [(ngModel)]="CustomerModel.customerCode" type="text" /><br/><br/>
-Customer Name
-<input [(ngModel)]="CustomerModel.customerName" type="text" /><br/><br/>
-Customer Amount
-<input [(ngModel)]="CustomerModel.customerAmount" type="text" /><br/><br/>
-<input type="button" value="Add Customer" (click)="Add()" />
+<form [formGroup]="CustomerModel.formCustomerGroup">
+    Customer Code
+    <input [(ngModel)]="CustomerModel.customerCode" formControlName="CustomerNameControl"  type="text" /><span>{{customercodeValivation}}</span>
+    <br/><br/>
+    Customer Name
+    <input [(ngModel)]="CustomerModel.customerName" formControlName="CustomerCodeControl" type="text" /><span>{{customerNameValivation}}</span>
+    <br/><br/>
+    Customer Amount
+    <input [(ngModel)]="CustomerModel.customerAmount" formControlName="CustomerAmountControl" type="number" /><span>{{customeramountValivation}}</span>
+    <br/><br/>
+    <input type="button" [disabled]="!(CustomerModel.formCustomerGroup.valid)"  value="Add Customer" (click)="Add()" />
+</form>
+
 <br/><br/>
 <h2>Customer List</h2>
 <!--

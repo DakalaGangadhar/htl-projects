@@ -1,5 +1,9 @@
 export class AuthorModel{
-    SupplierCode:string='';
-    SupplierName:string='';
-    SupplierAmount:number=0;
+    title:string='';
+    category:string='';
+    image:string='';
+    price:string='';
+    publisher:string='';
+    active:string='';
+    content:string='';
 }
