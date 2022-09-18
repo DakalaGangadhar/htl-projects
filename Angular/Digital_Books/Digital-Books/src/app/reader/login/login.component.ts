@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
       this._serviceLogin.loginReader(this.UserModel).subscribe(res=>{
         alert('Login Successfully');
         localStorage.setItem('token',res.token);
+        localStorage.setItem('readeremailid',this.UserModel.Username);
         this._router.navigate(['reader/add']);
       },res=>console.log(res));
     }else{     
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
       this._serviceLogin.loginAuthor(this.UserModel).subscribe(res=>{
         alert('Login Successfully');
         localStorage.setItem('token',res.token);
+        localStorage.setItem('authoremailid',this.UserModel.Username);
         this._router.navigate(['author/add']);
       },res=>console.log(res));
     }

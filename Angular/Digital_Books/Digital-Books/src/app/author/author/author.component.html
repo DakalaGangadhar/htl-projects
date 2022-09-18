@@ -1,21 +1,82 @@
-<h1>Create Books</h1>
-Title
-<input [(ngModel)]="AuthorModel.title" type="text" /><br/><br/>
-Catogory
-<input [(ngModel)]="AuthorModel.category" type="text" /><br/><br/>
-Image
-<input [(ngModel)]="AuthorModel.image" type="text" /><br/><br/>
-Price
-<input [(ngModel)]="AuthorModel.price" type="text" /><br/><br/>
-Publisher
-<input [(ngModel)]="AuthorModel.publisher" type="number" /><br/><br/>
-Active
-<input [(ngModel)]="AuthorModel.active" type="number" /><br/><br/>
-Content
-<input [(ngModel)]="AuthorModel.content" type="number" /><br/><br/>
-<input type="button" value="Create Books" (click)="Add()" />
-<br/><br/>
-<h2>Supplier List</h2>
 
 
-<app-grid-ui   [grid-columns]="[{'colName':'id'},{'colName':'title'},{'colName':'category'},{'colName':'image'},{'colName':'price'},{'colName':'publisher'},{'colName':'active'},{'colName':'content'}]" [grid-data]="AuthorModels" ></app-grid-ui>
+<div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-xl-6 col-md-1 col-sm-1">
+  
+      </div>
+      <div class="col-lg-6 col-xl-6 col-md-1 col-sm-1">
+        <div class="card bg-light">  
+          <h4 class="card-title mt-3 text-center">Create Book</h4>
+            <article class="card-body mx-auto" style="max-width: 400px;">
+            <div class="form-group input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"> <i style="width: 60px;">Title</i> </span>
+              </div>
+              <input [(ngModel)]="AuthorModel.title" class="form-control" placeholder="Enter Title" type="text">
+            </div>  <!-- form-group end.// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i style="width: 60px;">Author</i> </span>
+                </div>
+                <input [(ngModel)]="AuthorModel.author" class="form-control" placeholder="Enter Author" type="text">
+              </div>  <!-- form-group end.// -->
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i style="width: 60px;">Catogory</i> </span>
+                </div>
+                <input [(ngModel)]="AuthorModel.category" class="form-control" placeholder="Enter Catogory" type="text">
+              </div>  <!-- form-group end.// -->
+
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i style="width: 60px;">Image</i> </span>
+                </div>
+                <input [(ngModel)]="AuthorModel.image" class="form-control" placeholder="Enter Image" type="text">
+              </div>  <!-- form-group end.// -->
+
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i style="width: 60px;">Price</i> </span>
+                </div>
+                <input [(ngModel)]="AuthorModel.price" class="form-control" placeholder="Enter Price" type="text">
+              </div>  <!-- form-group end.// -->
+
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i style="width: 60px;">Publisher</i> </span>
+                </div>
+                <input [(ngModel)]="AuthorModel.publisher" class="form-control" placeholder="Enter Publisher" type="text">
+              </div>  <!-- form-group end.// -->
+
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i style="width: 60px;">Active</i> </span>
+                </div>
+                <input [(ngModel)]="AuthorModel.active" class="form-control" placeholder="Enter Active" type="tel">
+              </div>  <!-- form-group end.// -->
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i style="width: 60px;resize: none;">Content</i> </span>
+                </div>
+                <textarea [(ngModel)]="AuthorModel.contentdata" class="form-control" placeholder="Enter Content" type="text"></textarea>
+              </div>  <!-- form-group end.// -->
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block" (click)="CreateBooks()"> Create Book </button>
+            </div> <!-- form-group// -->
+        </article>
+       
+      </div>
+  
+      </div>
+    </div>
+    
+  
+  </div>
+
+<app-grid-ui   [grid-columns]="[{'colName':'id'},{'colName':'title'},{'colName':'category'},{'colName':'author'},{'colName':'image'},{'colName':'price'},{'colName':'active'},{'colName':'contentdata'},{'colName':'publisher'},{'colName':'releasedate'}]" 
+[grid-data]="AuthorModels"
+(grid-selected)="EditAuthor($event)" (grid-deleted)="DeleteAuthor($event)"
+></app-grid-ui>

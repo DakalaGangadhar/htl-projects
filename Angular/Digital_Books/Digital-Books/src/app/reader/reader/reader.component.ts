@@ -39,13 +39,11 @@ export class ReaderComponent implements OnInit {
    this._service.GetAuthorByReaderSearch(this.ReaderModel).subscribe(res=>this.Success(res),res=>console.log(res));  
   }
   
-  EditCustomer(input:any){
+  EditReader(input:any){
     this.isEdit=true;
     this.id_data=input.id;
     this.ReaderModel=input;
-    this.http.put(this.url, this.id_data).subscribe(res=>this.Success(res),res=>console.log(res));
-   
-
+    this.http.put(this.url, this.id_data).subscribe(res=>this.Success(res),res=>console.log(res)); 
   }
   DeleteAuthor(inputdata:any){
     this.id_data=inputdata.id;  

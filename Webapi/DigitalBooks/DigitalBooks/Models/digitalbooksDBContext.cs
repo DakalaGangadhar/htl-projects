@@ -19,6 +19,7 @@ namespace DigitalBooks.Models
 
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Authorlogin> Authorlogins { get; set; }
+        public virtual DbSet<Createbook> Createbooks { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -64,6 +65,33 @@ namespace DigitalBooks.Models
             modelBuilder.Entity<Authorlogin>(entity =>
             {
                 entity.ToTable("authorlogin");
+            });
+
+            modelBuilder.Entity<Createbook>(entity =>
+            {
+                entity.ToTable("createbooks");
+
+                entity.Property(e => e.Active).HasColumnName("active");
+
+                entity.Property(e => e.Author).HasColumnName("author");
+
+                entity.Property(e => e.Authorid).HasColumnName("authorid");
+
+                entity.Property(e => e.Category).HasColumnName("category");
+
+                entity.Property(e => e.Contentdata).HasColumnName("contentdata");
+
+                entity.Property(e => e.Image).HasColumnName("image");
+
+                entity.Property(e => e.Price).HasColumnName("price");
+
+                entity.Property(e => e.Publisher).HasColumnName("publisher");
+
+                entity.Property(e => e.Referemail).HasColumnName("referemail");
+
+                entity.Property(e => e.Releasedate).HasColumnName("releasedate");
+
+                entity.Property(e => e.Title).HasColumnName("title");
             });
 
             modelBuilder.Entity<User>(entity =>

@@ -1,3 +1,9 @@
+D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.GeneratedMSBuildEditorConfig.editorconfig
+D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.AssemblyInfoInputs.cache
+D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.AssemblyInfo.cs
+D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.csproj.CoreCompileInputs.cache
+D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.MvcApplicationPartsAssemblyInfo.cs
+D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.MvcApplicationPartsAssemblyInfo.cache
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\appsettings.json
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\DigitalBooks.exe
@@ -7,6 +13,7 @@ D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\DigitalBooks.r
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\DigitalBooks.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\DigitalBooks.pdb
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Humanizer.dll
+D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -28,7 +35,11 @@ D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Microsoft.Iden
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
@@ -48,11 +59,6 @@ D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\runtimes\win-x
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.GeneratedMSBuildEditorConfig.editorconfig
-D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.AssemblyInfoInputs.cache
-D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.AssemblyInfo.cs
-D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.csproj.CoreCompileInputs.cache
-D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.MvcApplicationPartsAssemblyInfo.cache
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\staticwebassets\DigitalBooks.StaticWebAssets.Manifest.cache
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\staticwebassets\DigitalBooks.StaticWebAssets.xml
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\scopedcss\bundle\DigitalBooks.styles.css
@@ -60,10 +66,4 @@ D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.R
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.pdb
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.genruntimeconfig.cache
-D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
-D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
-D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.MvcApplicationPartsAssemblyInfo.cs
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.csproj.AssemblyReference.cache

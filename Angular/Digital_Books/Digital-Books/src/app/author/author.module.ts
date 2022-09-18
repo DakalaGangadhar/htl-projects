@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { authorroutes } from '../routing/authorroutes';
 import { GridUiModule } from '../grid-ui/grid-ui.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthorServiceService } from '../services/author-service.service';
+import { TokenInterceptorService } from '../services/tokenInceptorservice';
 
 
 
@@ -16,7 +19,9 @@ import { GridUiModule } from '../grid-ui/grid-ui.module';
     CommonModule,
     FormsModule,
     RouterModule.forChild(authorroutes),
-    GridUiModule
-  ]
+    GridUiModule,
+    HttpClientModule,
+  ],
+  providers:[AuthorServiceService,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorService,multi:true}]
 })
 export class AuthorModule { }

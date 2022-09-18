@@ -33,6 +33,26 @@ export class GridUiComponent implements OnInit {
   deleteGrid(_deleted:any){
     this._emitemitter.emit(_deleted);
   }
+//-------------author-----------------------
+@Input("authorgrid-columns")
+set SetAuthorGridColumns(_gridColumn:Array<any>){
+  this.gridColumns=_gridColumn;
+}
+@Input("authorgrid-data")
+set SetAuthorGridData(_griddata:Array<any>){    
+  this.gridData=_griddata;
+}
+@Output("authorgrid-selected")
+authoremitemitter:EventEmitter<any>=new EventEmitter<any>();
 
+selectedAuthorGrid(_selected:any){
+  
+  this.emitemitter.emit(_selected);
+}
+@Output("authorgrid-deleted")
+_authoremitemitter:EventEmitter<any>=new EventEmitter<any>();
+deleteAuthorGrid(_deleted:any){
+  this._emitemitter.emit(_deleted);
+}
 
 }
