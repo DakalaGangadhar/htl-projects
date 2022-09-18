@@ -22,22 +22,26 @@ export class RegisterComponent implements OnInit {
     this.domain=window.location.href.split("/", 5);
     if(this.domain[3]=="reader"){
       this._serviceRegister.registerReader(this.RegisterModel).subscribe(res=>{
-        alert('Hi');
+        alert('Reader Register Successfully');
         localStorage.setItem('token',res.token);
-       // this._router.navigate(['reader/register']);
       },res=>console.log(res));
 
     }else{
       this._serviceRegister.registerAuthor(this.RegisterModel).subscribe(res=>{
-        alert('Hi');
+        alert('Author Register Successfully');
         localStorage.setItem('token',res.token);
-       // this._router.navigate(['reader/register']);
       },res=>console.log(res));
 
     }
-
     
-    
+    }
+    agianLogin(){
+      this.domain=window.location.href.split("/", 5);
+    if(this.domain[3]=="reader"){
+      this._router.navigate(['reader/login']);
+    }else{
+      this._router.navigate(['author/login']);
+    }
   
   }
 

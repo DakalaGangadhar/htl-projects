@@ -9,7 +9,6 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
 export class MasterComponent implements OnInit {
 
   constructor(private _auth:LoginServiceService) { }
-
   ngOnInit(): void {
   }
   LoggedIn(Input:boolean):boolean{
