@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DigitalBooks.Models
 {
-    public partial class User
+    public partial class Authorlogin
     {
         public int Id { get; set; }
         public string Username { get; set; }

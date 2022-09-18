@@ -38,10 +38,12 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"> <i style="width: 75px;">ReleaseDate</i> </span>
                     </div>
-                    <input class="form-control"  [(ngModel)]="ReaderModel.releasedate" placeholder="Enter ReleaseDate" type="text">
+                    <div action="/action_page.php">
+                      <input style="width: 222px;"  class="form-control"  [(ngModel)]="ReaderModel.releasedate" placeholder="Enter ReleaseDate" type="date" >
+                    </div>
                   </div> <!-- form-group// -->                  
                 <div class="form-group">
-                    <button type="button" class="btn btn-secondary" (click)="GetDataFromServer()">Search</button>
+                    <button type="button" class="btn btn-secondary" (click)="SearchAuthorByReader()">Search</button>
                 </div> <!-- form-group// -->
             </article>
            
@@ -56,10 +58,10 @@
       
       </div>
 
-<h2>Books List</h2>
+
 
 <app-grid-ui  [grid-columns]="[{'colName':'id'},{'colName':'title'},{'colName':'author'},{'colName':'publisher'},{'colName':'releasedate'}]"
-[grid-data]="ReaderModels"  (grid-selected)="EditCustomer($event)" (grid-deleted)="DeleteCustomer($event)"
+[grid-data]="ReaderModels"  (grid-selected)="EditCustomer($event)" (grid-deleted)="DeleteAuthor($event)"
 ></app-grid-ui>
 
 

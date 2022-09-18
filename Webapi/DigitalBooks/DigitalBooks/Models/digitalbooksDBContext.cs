@@ -18,6 +18,7 @@ namespace DigitalBooks.Models
         }
 
         public virtual DbSet<Author> Authors { get; set; }
+        public virtual DbSet<Authorlogin> Authorlogins { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -35,17 +36,15 @@ namespace DigitalBooks.Models
 
             modelBuilder.Entity<Author>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("author");
 
                 entity.Property(e => e.Active).HasColumnName("active");
 
+                entity.Property(e => e.Author1).HasColumnName("author");
+
                 entity.Property(e => e.Category).HasColumnName("category");
 
                 entity.Property(e => e.Contentdata).HasColumnName("contentdata");
-
-                entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
                 entity.Property(e => e.Image).HasColumnName("image");
 
@@ -60,6 +59,11 @@ namespace DigitalBooks.Models
                     .HasColumnName("releasedate");
 
                 entity.Property(e => e.Title).HasColumnName("title");
+            });
+
+            modelBuilder.Entity<Authorlogin>(entity =>
+            {
+                entity.ToTable("authorlogin");
             });
 
             modelBuilder.Entity<User>(entity =>

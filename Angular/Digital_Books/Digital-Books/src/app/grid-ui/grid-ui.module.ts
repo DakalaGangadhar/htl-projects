@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { GridUiComponent } from './grid-ui/grid-ui.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { RouterModule } from '@angular/router';
+import { gridroutes } from '../routing/gridroutes';
 
 
 
@@ -14,7 +16,8 @@ import { RegisterComponent } from './register/register.component';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forChild(gridroutes)
   ],
   exports:[GridUiComponent,CommonModule]
 })

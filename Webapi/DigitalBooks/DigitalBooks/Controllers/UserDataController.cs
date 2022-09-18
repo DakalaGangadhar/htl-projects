@@ -29,9 +29,9 @@ namespace DigitalBooks.Controllers
             return Ok(response);
         }
         [HttpDelete]
-        public IActionResult Delete(int id)
+        public IActionResult Delete([FromQuery]int authorid)
         {
-            var data = db.Authors.Where(x => x.Id == id).FirstOrDefault();
+            var data = db.Authors.Where(x => x.Id == authorid).FirstOrDefault();
             db.Authors.Remove(data);
             db.SaveChanges();
             //
@@ -55,6 +55,16 @@ namespace DigitalBooks.Controllers
             db.SaveChanges();
             var response = new { Status = "Success" };
             return Ok(response);
+        }
+        [HttpGet]
+        [Route("GetAuthorByReaderSearch")]
+        //public IEnumerable<Author> GetAuthorByReaderSearch([FromQuery]string title,string author,string publicher,DateTime releasedate)
+        public IEnumerable<Author> GetAuthorByReaderSearch([FromQuery] string title)
+        {
+           // DateTime dateTime = Convert.ToDateTime(releasedate);
+            List<Author> getdata = db.Authors.Where(x => x.Title == title).ToList();
+           // List<Author> getdata = db.Authors.Where(x => x.Title==title || x.Author1==author || x.Publisher==publicher||x.Releasedate== dateTime).ToList();
+            return getdata;
         }
     }
 }

@@ -6,14 +6,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginServiceService {
 
-  _loginUrl="https://localhost:44330/api/UserLogin/login-user";
-  _registerUrl="https://localhost:44330/api/UserLogin/register-user";
+  _readerloginUrl="https://localhost:44330/api/UserLogin/login-user";
+  _authorloginUrl="https://localhost:44330/api/Author/author-login";
+  
   constructor(private http:HttpClient) { }
 
-  loginUser(login:any){
-    return this.http.post<any>(this._loginUrl,login);
+  loginReader(login:any){
+    return this.http.post<any>(this._readerloginUrl,login);
   }
-  registerUserData(register:any){
-    return this.http.post<any>(this._registerUrl,register);
+  
+  loginAuthor(login:any){
+    return this.http.post<any>(this._authorloginUrl,login);
   }
+  
 }

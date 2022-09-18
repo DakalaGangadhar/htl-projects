@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReaderModel } from 'src/app/models/ReaderModel';
+import { LoginServiceService } from 'src/app/services/login-service.service';
+import { ReaderServiceService } from 'src/app/services/reader-service.service';
 
 @Component({
   selector: 'app-reader',
@@ -15,10 +17,10 @@ export class ReaderComponent implements OnInit {
   public url = "https://localhost:44330/api/UserData";
   public id_data:string='';
   public isEdit=false;
-  constructor(private http:HttpClient,private _router:Router) { }
+  constructor(private http:HttpClient,private _router:Router,private _service:ReaderServiceService) { }
 
   ngOnInit(): void {
-    this.GetDataFromServer();
+    this.SearchAuthorByReader();
   }
   Add(){   
     
@@ -33,11 +35,10 @@ export class ReaderComponent implements OnInit {
       
   }
   
-  GetDataFromServer(){
-    this.ReaderModel;
-    this.http.get(this.url).subscribe(res=>this.Success(res),res=>console.log(res));
- 
+  SearchAuthorByReader(){   
+   this._service.GetAuthorByReaderSearch(this.ReaderModel).subscribe(res=>this.Success(res),res=>console.log(res));  
   }
+  
   EditCustomer(input:any){
     this.isEdit=true;
     this.id_data=input.id;
@@ -46,17 +47,19 @@ export class ReaderComponent implements OnInit {
    
 
   }
-  DeleteCustomer(inputdata:any){
-    this.id_data=inputdata.id;
-    this.http.delete(this.url+'?custId='+this.id_data).subscribe(id_data => {
+  DeleteAuthor(inputdata:any){
+    this.id_data=inputdata.id;  
+    this._service.DeleteBooksData(this.id_data).subscribe(id_data => {
       console.log(id_data);
-    });
+      this.SearchAuthorByReader();
+    }); 
   }
   PostSuccess(input:any){
-    this.GetDataFromServer();
+    this.SearchAuthorByReader();
   }
-  Success(input:any){
-    this.ReaderModel=input;
+  Success(input: any) {
+    console.log(input);
+    this.ReaderModels = input;
   }
   readerLogin(){
     this._router.navigate(['reader/add']);

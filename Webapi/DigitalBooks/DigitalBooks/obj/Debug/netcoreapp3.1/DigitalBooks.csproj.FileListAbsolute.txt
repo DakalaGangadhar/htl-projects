@@ -48,7 +48,6 @@ D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\runtimes\win-x
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.csproj.AssemblyReference.cache
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.GeneratedMSBuildEditorConfig.editorconfig
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.AssemblyInfoInputs.cache
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.AssemblyInfo.cs
@@ -67,3 +66,4 @@ D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Swashbuckle.As
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.MvcApplicationPartsAssemblyInfo.cs
+D:\H_T_L\Webapi\DigitalBooks\DigitalBooks\obj\Debug\netcoreapp3.1\DigitalBooks.csproj.AssemblyReference.cache
