@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
       <div class="col-lg-6 col-xl-6 col-md-1 col-sm-1">
-  
+        <img src="/assets/estore.jpg" alt="Dital Book" style="width: 570px; height: 596px;"> 
       </div>
       <div class="col-lg-6 col-xl-6 col-md-1 col-sm-1">
         <div class="card bg-light">  
@@ -77,6 +77,6 @@
   </div>
 
 <app-grid-ui   [grid-columns]="[{'colName':'id'},{'colName':'title'},{'colName':'category'},{'colName':'author'},{'colName':'image'},{'colName':'price'},{'colName':'active'},{'colName':'contentdata'},{'colName':'publisher'},{'colName':'releasedate'}]" 
-[grid-data]="AuthorModels"
+[grid-data]="AuthorModels" [readereditbutton]="readereditbutton" [readerdeletebutton]="readerdeletebutton"
 (grid-selected)="EditAuthor($event)" (grid-deleted)="DeleteAuthor($event)"
 ></app-grid-ui>

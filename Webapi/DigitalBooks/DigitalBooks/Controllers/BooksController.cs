@@ -41,9 +41,10 @@ namespace DigitalBooks.Controllers
         }
         [HttpGet]
         [Route("getbooksdata")]
-        public IEnumerable<Createbook> Get()
+        public IEnumerable<Createbook> Get([FromQuery]string auhtoremail)
         {
-            return db.Createbooks;
+            List<Createbook> createbooks = db.Createbooks.Where(x => x.Referemail == auhtoremail).ToList();
+            return createbooks;
         }
         private Createbook AuthenticateUser(Createbook createbook, bool IsRegister)
         {

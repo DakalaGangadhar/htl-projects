@@ -54,8 +54,8 @@
 
 
 
-<app-grid-ui  [grid-columns]="[{'colName':'id'},{'colName':'title'},{'colName':'author'},{'colName':'publisher'},{'colName':'releasedate'}]"
-[grid-data]="ReaderModels"  (grid-selected)="EditReader($event)" (grid-deleted)="DeleteAuthor($event)"
+<app-grid-ui  [grid-columns]="[{'colName':'id'},{'colName':'title'},{'colName':'category'},{'colName':'author'},{'colName':'image'},{'colName':'price'},{'colName':'active'},{'colName':'contentdata'},{'colName':'publisher'},{'colName':'releasedate'},{'colName':'referemail'}]"
+[grid-data]="ReaderModels"  (grid-selected)="EditReader($event)" (grid-deleted)="DeleteAuthor($event)" [readereditbutton]="readereditbutton" [readerdeletebutton]="readerdeletebutton"
 ></app-grid-ui>
 
 

@@ -10,9 +10,21 @@ export class GridUiComponent implements OnInit {
   constructor() { }
   gridColumns: Array<any> =new Array<any>();
   gridData: Array<any> =new Array<any>();
+  @Input("readerdeletebutton") public readerdeletebutton:any;
+  @Input("readereditbutton") public readereditbutton:any;
+  public displayNone:any="";
 
   ngOnInit(): void {
+    if(this.readereditbutton){
+      this.displayNone="disabled-link"
+    }else{
+      this.displayNone=""
+    }
   }
+ 
+
+
+
   @Input("grid-columns")
   set SetGridColumns(_gridColumn:Array<any>){
     this.gridColumns=_gridColumn;
@@ -33,6 +45,7 @@ export class GridUiComponent implements OnInit {
   deleteGrid(_deleted:any){
     this._emitemitter.emit(_deleted);
   }
+
 //-------------author-----------------------
 @Input("authorgrid-columns")
 set SetAuthorGridColumns(_gridColumn:Array<any>){

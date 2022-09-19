@@ -20,7 +20,7 @@
                             <td *ngFor="let col of gridColumns">
                              {{colObj[col.colName]}}
                              </td>
-                             <td>
+                             <td [class]="displayNone">
                                 <a class="edit" title="Edit" data-toggle="tooltip" (click)="selectedGrid(colObj)"><i class="material-icons">&#xE254;</i></a>
                                 <a class="delete" title="Delete" data-toggle="tooltip" (click)="deleteGrid(colObj)"><i class="material-icons">&#xE872;</i></a>
                             </td> 

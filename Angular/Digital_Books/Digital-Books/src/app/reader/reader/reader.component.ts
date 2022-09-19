@@ -17,10 +17,12 @@ export class ReaderComponent implements OnInit {
   public url = "https://localhost:44330/api/UserData";
   public id_data:string='';
   public isEdit=false;
+
+  public readereditbutton:boolean=true;
+  public readerdeletebutton:boolean=true;
   constructor(private http:HttpClient,private _router:Router,private _service:ReaderServiceService) { }
 
   ngOnInit(): void {
-    this.SearchAuthorByReader();
   }
   Add(){   
     

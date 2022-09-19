@@ -58,12 +58,11 @@ namespace DigitalBooks.Controllers
         }
         [HttpGet]
         [Route("GetAuthorByReaderSearch")]
-        //public IEnumerable<Author> GetAuthorByReaderSearch([FromQuery]string title,string author,string publicher,DateTime releasedate)
-        public IEnumerable<Author> GetAuthorByReaderSearch([FromQuery] string title)
+        public IEnumerable<Createbook> GetAuthorByReaderSearch([FromQuery]string title,string author,string publicher,string releasedate)
         {
-           // DateTime dateTime = Convert.ToDateTime(releasedate);
-            List<Author> getdata = db.Authors.Where(x => x.Title == title).ToList();
-           // List<Author> getdata = db.Authors.Where(x => x.Title==title || x.Author1==author || x.Publisher==publicher||x.Releasedate== dateTime).ToList();
+            //DateTime dateTime = Convert.ToDateTime(releasedate);
+            //List<Author> getdata = db.Authors.Where(x => x.Title == title).ToList();
+            List<Createbook> getdata = db.Createbooks.Where(x => x.Title==title || x.Author==author || x.Publisher==publicher||x.Releasedate== releasedate).ToList();
             return getdata;
         }
     }

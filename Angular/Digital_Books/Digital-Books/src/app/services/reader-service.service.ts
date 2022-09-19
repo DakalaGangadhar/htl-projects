@@ -16,10 +16,10 @@ export class ReaderServiceService {
     _readerModel.author;
     _readerModel.publisher;
     _readerModel.releasedate;
-   this._token=this._GetAuthorByReaderSearch+'?title='+ _readerModel.title +'&&author='+ _readerModel.author+'&&publisher='+_readerModel.publisher+'&&releasedate='+ _readerModel.releasedate;
+   this._token=this._GetAuthorByReaderSearch+'?title='+ _readerModel.title +'&author='+ _readerModel.author+'&publisher='+_readerModel.publisher+'&releasedate='+ _readerModel.releasedate;
 
-    //return this.http.get<any>(this._GetAuthorByReaderSearch+'?title='+ _readerModel.title +'&&author='+ _readerModel.author+'&&publisher='+_readerModel.publisher+'&&releasedate='+ _readerModel.releasedate);
-    return this.http.get<any>(this._GetAuthorByReaderSearch+'?title='+ _readerModel.title);
+    return this.http.get<any>(this._GetAuthorByReaderSearch+'?title='+ _readerModel.title +'&author='+ _readerModel.author+'&publisher='+_readerModel.publisher+'&releasedate='+ _readerModel.releasedate);
+   // return this.http.get<any>(this._GetAuthorByReaderSearch+'?title='+ _readerModel.title);
   }
   DeleteBooksData(id_data:any){
     return this.http.delete(this._BooksDelete+'?authorid='+id_data);

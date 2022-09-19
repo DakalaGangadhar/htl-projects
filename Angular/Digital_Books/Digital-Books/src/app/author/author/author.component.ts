@@ -16,6 +16,8 @@ public isEdit:boolean=false;
 public authorId:any;
 public url:any="https://localhost:44330/api/Author/books";
 public updateurl:any="https://localhost:44330/api/Books/bookupdate";
+public readereditbutton:boolean=false;
+public readerdeletebutton:boolean=false;
   ngOnInit(): void {
     this.GetAuthorByReader();
   }
@@ -57,6 +59,7 @@ public updateurl:any="https://localhost:44330/api/Books/bookupdate";
   }
   GetAuthorByReader(){   
     debugger;
+    this.AuthorModel.referemail=localStorage.getItem('authoremailid');
     this._service.GetAuthorData(this.AuthorModel).subscribe(res=>this.Success(res),res=>console.log(res));  
    }
 
