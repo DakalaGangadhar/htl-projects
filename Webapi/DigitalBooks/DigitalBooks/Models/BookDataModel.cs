@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-
-#nullable disable
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DigitalBooks.Models
 {
-    public partial class Createbook
+    public class BookDataModel
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Title { get; set; }
         public string Category { get; set; }
         public string Author { get; set; }

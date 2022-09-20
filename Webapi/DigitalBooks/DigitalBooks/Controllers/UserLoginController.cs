@@ -1,4 +1,5 @@
 ﻿using DigitalBooks.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -7,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +16,7 @@ namespace DigitalBooks.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
     public class UserLoginController : ControllerBase
     {
         digitalbooksDBContext db = new digitalbooksDBContext();
@@ -58,14 +61,20 @@ namespace DigitalBooks.Controllers
         private string GenerateToken(User user)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["jwt:Key"]));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
-            var token = new JwtSecurityToken(_config["jwt:Issuer"],
-                _config["jwt:Audience"],
-                null,
-                expires: DateTime.Now.AddMinutes(120),
-                signingCredentials: credentials);
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var token = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, user.Username)
+                }),
+                Expires = DateTime.Now.AddMinutes(120),
+                SigningCredentials = credentials
+            };
+            var TokenHandler = new JwtSecurityTokenHandler();
+            var tokenGenerated = TokenHandler.CreateToken(token);
+            return TokenHandler.WriteToken(tokenGenerated).ToString();
         }
         [HttpPost]
         [Route("register-user")]

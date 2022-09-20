@@ -24,10 +24,15 @@ public readerdeletebutton:boolean=false;
   AuthorModel: AuthorModel = new AuthorModel();
   AuthorModels: Array<AuthorModel> = new Array<AuthorModel>();
   public lclEmail:any='';
+  public activeBool:string='';
+  public authorFlag:boolean=true;
   CreateBooks() {
 
     this.AuthorModel.referemail=localStorage.getItem('authoremailid');
+    
     if(this.isEdit){
+      this.activeBool= String(this.AuthorModel.active);
+      this.AuthorModel.active=this.activeBool;
       this.http.put(this.updateurl,this.AuthorModel).subscribe(res=>this.PostSuccess(res),res=>console.log(res))
     }else{
       this.http.post("https://localhost:44330/api/Books/create-books",this.AuthorModel).subscribe(res=>this.PostSuccess(res),res=>console.log(res));
@@ -35,6 +40,7 @@ public readerdeletebutton:boolean=false;
     
              
         this.AuthorModel = new AuthorModel();  
+        this.authorFlag=false;
 
   }
   Success(input: any) {
@@ -42,6 +48,7 @@ public readerdeletebutton:boolean=false;
     this.AuthorModels = input;
   }
   EditAuthor(input:any){
+    this.authorFlag=true;
     this.isEdit=true;
     this.authorId=input.id;
     this.AuthorModel=input;
@@ -61,6 +68,12 @@ public readerdeletebutton:boolean=false;
     debugger;
     this.AuthorModel.referemail=localStorage.getItem('authoremailid');
     this._service.GetAuthorData(this.AuthorModel).subscribe(res=>this.Success(res),res=>console.log(res));  
+   }
+   dirAddBookspage(){
+    this.authorFlag=true;
+   }
+   dirCreateBooksdiv(){
+    this.authorFlag=false;
    }
 
 }

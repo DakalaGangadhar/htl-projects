@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { ReaderServiceService } from '../services/reader-service.service';
 
 import { TokenInterceptorService } from '../services/tokenInceptorservice';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 
 
@@ -28,7 +29,7 @@ import { TokenInterceptorService } from '../services/tokenInceptorservice';
     GridUiModule
 
   ],
-  providers: [ReaderServiceService,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorService,multi:true}],
+  providers: [ReaderServiceService,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorService,multi:true},{provide:JWT_OPTIONS,useValue:JWT_OPTIONS},JwtHelperService],
   bootstrap: [ReaderComponent]
 })
 export class ReaderModule { }

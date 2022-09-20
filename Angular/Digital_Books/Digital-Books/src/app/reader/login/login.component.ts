@@ -20,10 +20,15 @@ export class LoginComponent implements OnInit {
 
   loginUser(){
 
+    var _userData = {
+      Username: this.UserModel.Username,
+      Password: this.UserModel.Password
+    };
+
     this.domainArray=window.location.href.split("/", 5);
     if(this.domainArray[3]=="reader"){
 
-      this._serviceLogin.loginReader(this.UserModel).subscribe(res=>{
+      this._serviceLogin.loginReader(_userData).subscribe(res=>{
         alert('Login Successfully');
         localStorage.setItem('token',res.token);
         localStorage.setItem('readeremailid',this.UserModel.Username);
@@ -31,8 +36,7 @@ export class LoginComponent implements OnInit {
       },res=>console.log(res));
     }else{     
 
-      this._serviceLogin.loginAuthor(this.UserModel).subscribe(res=>{
-        alert('Login Successfully');
+      this._serviceLogin.loginAuthor(_userData).subscribe(res=>{
         localStorage.setItem('token',res.token);
         localStorage.setItem('authoremailid',this.UserModel.Username);
         this._router.navigate(['author/add']);
@@ -46,9 +50,11 @@ export class LoginComponent implements OnInit {
       this._router.navigate(['reader/register']);
     }else{
       this._router.navigate(['author/register']);
-    }
-
+    }    
+  }
+  hasError(typeofValidator:string,controlname:string):Boolean{
     
+    return this.UserModel.formUserGroup.controls[controlname].hasError(typeofValidator);
   }
   
 }

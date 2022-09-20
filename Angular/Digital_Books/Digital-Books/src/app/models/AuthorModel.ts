@@ -4,7 +4,7 @@ export class AuthorModel{
     author:string='';
     image:string='';
     price:string='';
-    active:string='';
+    active:any='';
     contentdata:string='';
     publisher:string='';
     releasedate:any='2022-09-18 07:34:25.080';

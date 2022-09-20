@@ -19,7 +19,7 @@ namespace DigitalBooks.Models
 
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Authorlogin> Authorlogins { get; set; }
-        public virtual DbSet<Createbook> Createbooks { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -67,9 +67,9 @@ namespace DigitalBooks.Models
                 entity.ToTable("authorlogin");
             });
 
-            modelBuilder.Entity<Createbook>(entity =>
+            modelBuilder.Entity<Book>(entity =>
             {
-                entity.ToTable("createbooks");
+                entity.ToTable("Book");
 
                 entity.Property(e => e.Active).HasColumnName("active");
 
@@ -77,23 +77,32 @@ namespace DigitalBooks.Models
 
                 entity.Property(e => e.Authorid).HasColumnName("authorid");
 
+                entity.Property(e => e.Authormail).HasColumnName("authormail");
+
                 entity.Property(e => e.Category).HasColumnName("category");
 
                 entity.Property(e => e.Contentdata).HasColumnName("contentdata");
 
                 entity.Property(e => e.Image).HasColumnName("image");
 
-                entity.Property(e => e.Price).HasColumnName("price");
+                entity.Property(e => e.Price)
+                    .HasColumnType("decimal(8, 2)")
+                    .HasColumnName("price");
 
                 entity.Property(e => e.Publisher).HasColumnName("publisher");
 
-                entity.Property(e => e.Referemail).HasColumnName("referemail");
-
-                entity.Property(e => e.Releasedate).HasColumnName("releasedate");
+                entity.Property(e => e.Releasedate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("releasedate");
 
                 entity.Property(e => e.Title).HasColumnName("title");
+
+                entity.Property(e => e.Updatedate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("updatedate");
             });
 
+           
             modelBuilder.Entity<User>(entity =>
             {
                 entity.ToTable("user");

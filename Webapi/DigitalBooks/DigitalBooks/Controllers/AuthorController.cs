@@ -1,4 +1,5 @@
 ﻿using DigitalBooks.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +15,7 @@ namespace DigitalBooks.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+   // [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
     public class AuthorController : ControllerBase
     {
         digitalbooksDBContext db = new digitalbooksDBContext();

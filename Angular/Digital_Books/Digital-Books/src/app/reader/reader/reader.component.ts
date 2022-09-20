@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { ReaderModel } from 'src/app/models/ReaderModel';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 import { ReaderServiceService } from 'src/app/services/reader-service.service';
@@ -17,12 +18,16 @@ export class ReaderComponent implements OnInit {
   public url = "https://localhost:44330/api/UserData";
   public id_data:string='';
   public isEdit=false;
+  public readerFlag:boolean=true;
 
   public readereditbutton:boolean=true;
   public readerdeletebutton:boolean=true;
-  constructor(private http:HttpClient,private _router:Router,private _service:ReaderServiceService) { }
-
+  constructor(private http:HttpClient,private _router:Router,private _service:ReaderServiceService,private jwt: JwtHelperService, private _auth: LoginServiceService) { }
+public name:any='';
   ngOnInit(): void {
+    this.name=this.jwt.decodeToken(this._auth.getToken()?.toString()).unique_name;
+    console.log(this.jwt.decodeToken(this._auth.getToken()?.toString()));
+    console.log(this.name);
   }
   Add(){   
     
@@ -33,12 +38,13 @@ export class ReaderComponent implements OnInit {
       this.http.post(this.url,this.ReaderModel).subscribe(res=>this.PostSuccess(res),res=>console.log(res))
     }
        
-        this.ReaderModel = new ReaderModel();
+        this.ReaderModel = new ReaderModel();        
       
   }
   
   SearchAuthorByReader(){   
-   this._service.GetAuthorByReaderSearch(this.ReaderModel).subscribe(res=>this.Success(res),res=>console.log(res));  
+   this._service.GetAuthorByReaderSearch(this.ReaderModel).subscribe(res=>this.Success(res),res=>console.log(res)); 
+   this.readerFlag=false; 
   }
   
   EditReader(input:any){
@@ -63,6 +69,9 @@ export class ReaderComponent implements OnInit {
   }
   readerLogin(){
     this._router.navigate(['reader/add']);
+  }
+  dirSearchBooks(){
+    this.readerFlag=true; 
   }
 
 }

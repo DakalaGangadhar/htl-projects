@@ -1,4 +1,6 @@
-﻿using DigitalBooks.Models;
+﻿using DigitalBooks.Common;
+using DigitalBooks.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +16,7 @@ namespace DigitalBooks.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
     public class BooksController : ControllerBase
     {
         digitalbooksDBContext db = new digitalbooksDBContext();
@@ -24,7 +27,7 @@ namespace DigitalBooks.Controllers
         }
         [HttpPost]
         [Route("create-books")]
-        public IActionResult CreateBooks([FromBody] Createbook createbook)
+        public IActionResult CreateBooks([FromBody] BookDataModel createbook)
         {
             var data = db.Authorlogins.Where(x => x.Username == createbook.Referemail).FirstOrDefault();
             createbook.Authorid = data.Id;
@@ -41,19 +44,36 @@ namespace DigitalBooks.Controllers
         }
         [HttpGet]
         [Route("getbooksdata")]
-        public IEnumerable<Createbook> Get([FromQuery]string auhtoremail)
+        public IEnumerable<Book> Get([FromQuery]string auhtoremail)
         {
-            List<Createbook> createbooks = db.Createbooks.Where(x => x.Referemail == auhtoremail).ToList();
+            List<Book> createbooks = db.Books.Where(x => x.Authormail == auhtoremail && x.Active==true).ToList();
+            BookDataModel bookDataModel = new BookDataModel();
+            
             return createbooks;
         }
-        private Createbook AuthenticateUser(Createbook createbook, bool IsRegister)
+        private BookDataModel AuthenticateUser(BookDataModel createbook, bool IsRegister)
         {
-            db.Createbooks.Add(createbook);
+            BookDataModel createbook1 = new BookDataModel();
+            Book createbooklist = new Book();
+            createbooklist.Image = createbook.Image;
+            string price = (createbook.Price != null || createbook.Price != "") ? createbook.Price : "0.00";
+            createbooklist.Price = Decimal.Parse(price);
+            createbooklist.Publisher = createbook.Publisher;
+            createbooklist.Title = createbook.Title;
+            createbooklist.Releasedate = DateTime.Parse(createbook.Releasedate);
+            createbooklist.Contentdata = createbook.Contentdata;
+            createbooklist.Category = createbook.Category;
+            createbooklist.Author = createbook.Author;
+            createbooklist.Active = Convert.ToBoolean(createbook.Active);
+            createbooklist.Authorid = createbook.Authorid;
+            createbooklist.Authormail = createbook.Referemail;
+
+            db.Books.Add(createbooklist);
             db.SaveChanges();
-            return createbook;
+            return createbook1;
 
         }
-        private string GenerateToken(Createbook createbook)
+        private string GenerateToken(BookDataModel createbook)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -69,8 +89,8 @@ namespace DigitalBooks.Controllers
         [Route("book-delete")]
         public IActionResult BookDelete([FromQuery] int authorid)
         {
-            var data = db.Createbooks.Where(x => x.Id == authorid).FirstOrDefault();
-            db.Createbooks.Remove(data);
+            var data = db.Books.Where(x => x.Id == authorid).FirstOrDefault();
+            db.Books.Remove(data);
             db.SaveChanges();
             //
             var response = new { Status = "Success" };
@@ -78,18 +98,18 @@ namespace DigitalBooks.Controllers
         }
         [HttpPut]
         [Route("bookupdate")]
-        public IActionResult put([FromBody] Createbook createbook)
+        public IActionResult put([FromBody] BookDataModel createbook)
         {
-            var authorUpdate = db.Createbooks.Where(s => s.Id == createbook.Id).FirstOrDefault();
+            var authorUpdate = db.Books.Where(s => s.Id == createbook.Id).FirstOrDefault();
             authorUpdate.Title = createbook.Title;
             authorUpdate.Publisher = createbook.Publisher;
-            authorUpdate.Price = createbook.Price;
+            authorUpdate.Price = Decimal.Parse(createbook.Price);
             authorUpdate.Image = createbook.Image;
             authorUpdate.Category = createbook.Category;
             authorUpdate.Contentdata = createbook.Contentdata;
-            authorUpdate.Active = createbook.Active;
+            authorUpdate.Active = Convert.ToBoolean(createbook.Active);
             authorUpdate.Author = createbook.Author;
-            db.Createbooks.Update(authorUpdate);
+            db.Books.Update(authorUpdate);
 
 
             db.SaveChanges();
