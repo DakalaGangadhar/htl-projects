@@ -90,7 +90,7 @@ namespace DigitalBooks
             app.UseSwaggerUI(c => {
                 c.SwaggerEndpoint("/swagger/v2/swagger.json", "DititalBooks app v2");
             });
-
+            app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

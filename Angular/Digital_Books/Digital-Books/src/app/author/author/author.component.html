@@ -46,7 +46,9 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"> <i style="width: 60px;">Image</i> </span>
               </div>
-              <input [(ngModel)]="AuthorModel.image" class="form-control" placeholder="Enter Image" type="text">
+              <!--<input [(ngModel)]="AuthorModel.image" class="form-control" placeholder="Enter Image" type="text">-->
+              <!--<label for="formFileDisabled" class="form-label">example</label>-->
+              <input [(ngModel)]="AuthorModel.image" class="form-control" type="file" (change)="onFileChanged($event)">
             </div> <!-- form-group end.// -->
 
             <div class="form-group input-group">
@@ -78,7 +80,7 @@
             </div> <!-- form-group end.// -->
 
             <div class="form-group">
-              <button type="submit" class="btn btn-primary btn-block" (click)="CreateBooks()"> Create Book </button>
+              <button type="submit" class="btn btn-primary btn-block" (click)="CreateBooks($event)"> Create Book </button>
             </div> <!-- form-group// -->
           </article>
 

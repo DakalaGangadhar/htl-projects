@@ -1,6 +1,7 @@
 ﻿using DigitalBooks.Common;
 using DigitalBooks.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,31 +18,64 @@ namespace DigitalBooks.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
     public class BooksController : ControllerBase
     {
         digitalbooksDBContext db = new digitalbooksDBContext();
+        public static IWebHostEnvironment _environment;
+        [BindProperty]
+        public BookDataModel bookData { get; set; }
         private IConfiguration _config;
-        public BooksController(IConfiguration config)
+        public BooksController(IConfiguration config, IWebHostEnvironment environment)
         {
             _config = config;
+            _environment = environment;
         }
         [HttpPost]
         [Route("create-books")]
-        public IActionResult CreateBooks([FromBody] BookDataModel createbook)
+        public IActionResult CreateBooks([FromForm]BookDataModel bookDataModel)
         {
-            var data = db.Authorlogins.Where(x => x.Username == createbook.Referemail).FirstOrDefault();
-            createbook.Authorid = data.Id;
-            DateTime dateTime= DateTime.UtcNow;
-            createbook.Releasedate = dateTime.ToString("dd/MM/yyyy"); //Convert.ToString(dateTime);
-            IActionResult response = Unauthorized();
-            var userdata = AuthenticateUser(createbook, false);
-            if (createbook != null)
+            IActionResult response;
+            if (bookDataModel.Image.Length>0)
             {
-                var tokenString = GenerateToken(userdata);
-                response = Ok(new { token = tokenString });
+                
+                if (!Directory.Exists(_environment.WebRootPath + "\\upload\\"))
+                {
+                    Directory.CreateDirectory(_environment.WebRootPath + "\\upload\\"); 
+                }
+                using (FileStream fileStream=System.IO.File.Create(_environment.WebRootPath + "\\upload\\"+ bookDataModel.Image.FileName))
+                {
+                    bookDataModel.Image.CopyTo(fileStream);
+                    fileStream.Flush();
+                    string str = "\\upload\\" + bookDataModel.Image.FileName;
+                    fileStream.Dispose();
+                }
+                string path = "D:\\H_T_L\\Webapi\\DigitalBooks\\DigitalBooks\\wwwroot\\upload\\" + bookDataModel.Image.FileName;
+                byte[] imageArray = System.IO.File.ReadAllBytes(path);
+                string base64ImageRepresentation = Convert.ToBase64String(imageArray);
+                
+
+                var data = db.Authorlogins.Where(x => x.Username == bookDataModel.Referemail).FirstOrDefault();
+                bookDataModel.Authorid = data.Id;
+                DateTime dateTime = DateTime.UtcNow;
+                bookDataModel.Releasedate = dateTime.ToString("dd/MM/yyyy"); //Convert.ToString(dateTime);
+                bookDataModel.baseImage = base64ImageRepresentation;
+                response = Unauthorized();
+                var userdata = AuthenticateUser(bookDataModel, false);
+                if (bookDataModel != null)
+                {
+                    var tokenString = GenerateToken(userdata);
+                    response = Ok(new { token = tokenString });
+                }
+                return response;
             }
-            return response; ;
+            else
+            {
+                response = Ok(new { token = "failled" });
+            }
+            return response;
+
+
         }
         [HttpGet]
         [Route("getbooksdata")]
@@ -55,7 +90,7 @@ namespace DigitalBooks.Controllers
         {
             BookDataModel createbook1 = new BookDataModel();
             Book createbooklist = new Book();
-            createbooklist.Image = createbook.Image;
+            //createbooklist.Image = createbook.Image;
             string price = (createbook.Price != null || createbook.Price != "") ? createbook.Price : "0.00";
             createbooklist.Price = Decimal.Parse(price);
             createbooklist.Publisher = createbook.Publisher;
@@ -67,6 +102,7 @@ namespace DigitalBooks.Controllers
             createbooklist.Active = Convert.ToBoolean(createbook.Active);
             createbooklist.Authorid = createbook.Authorid;
             createbooklist.Authormail = createbook.Referemail;
+            createbooklist.Image = createbook.baseImage;
 
             db.Books.Add(createbooklist);
             db.SaveChanges();
@@ -104,7 +140,7 @@ namespace DigitalBooks.Controllers
             authorUpdate.Title = createbook.Title;
             authorUpdate.Publisher = createbook.Publisher;
             authorUpdate.Price = Decimal.Parse(createbook.Price);
-            authorUpdate.Image = createbook.Image;
+            //authorUpdate.Image = createbook.Image;
             authorUpdate.Category = createbook.Category;
             authorUpdate.Contentdata = createbook.Contentdata;
             authorUpdate.Active = Convert.ToBoolean(createbook.Active);

@@ -26,16 +26,33 @@ public readerdeletebutton:boolean=false;
   public lclEmail:any='';
   public activeBool:string='';
   public authorFlag:boolean=true;
-  CreateBooks() {
-
+  public name='';
+  public selectedFile!: File;
+  
+  onFileChanged(event:any) {
+    this.selectedFile = event.target.files[0]
+  }
+  CreateBooks(event:any) {
     this.AuthorModel.referemail=localStorage.getItem('authoremailid');
+    const uploadData = new FormData();
+    uploadData.append('image', this.selectedFile, this.selectedFile.name);
+    uploadData.append('Title', this.AuthorModel.title);
+    uploadData.append('Price', this.AuthorModel.price);
+    uploadData.append('Category', this.AuthorModel.category);
+    uploadData.append('Author', this.AuthorModel.author);
+    uploadData.append('Active', this.AuthorModel.active);
+    uploadData.append('Contentdata', this.AuthorModel.contentdata);
+    uploadData.append('Publisher', this.AuthorModel.publisher);
+    uploadData.append('Referemail', this.AuthorModel.referemail);
+
+
     
     if(this.isEdit){
       this.activeBool= String(this.AuthorModel.active);
       this.AuthorModel.active=this.activeBool;
       this.http.put(this.updateurl,this.AuthorModel).subscribe(res=>this.PostSuccess(res),res=>console.log(res))
     }else{
-      this.http.post("https://localhost:44330/api/Books/create-books",this.AuthorModel).subscribe(res=>this.PostSuccess(res),res=>console.log(res));
+      this.http.post("https://localhost:44330/api/Books/create-books",uploadData).subscribe(res=>this.PostSuccess(res),res=>console.log(res));
     }
     
              

@@ -2,7 +2,7 @@ export class AuthorModel{
     title:string='';
     category:string='';
     author:string='';
-    image:string='';
+    image!: FormData;
     price:string='';
     active:any='';
     contentdata:string='';
