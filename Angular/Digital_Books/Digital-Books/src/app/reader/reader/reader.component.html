@@ -1,5 +1,10 @@
 <div *ngIf="readerFlag;else other_content">
   <div class="container">
+    <div class="d-flex flex-row border border-white">
+      <div class="p-2">Flex item 1</div>
+      <div class="p-2">Flex item 2</div>
+      <div class="p-2">Flex item 3</div>
+    </div>   
     <div class="row">
       <div class="col-lg-3 col-xl-3 col-md-2 col-sm-1">
 
@@ -14,9 +19,9 @@
           <div class="card-body mx-auto" style="max-width: 400px;">
             <div class="form-group input-group">
               <div class="input-group-prepend">
-                <span class="input-group-text"> <i style="width: 75px;">Title</i> </span>
+                <span class="input-group-text"> <i style="width: 75px;">Category</i> </span>
               </div>
-              <input [(ngModel)]="ReaderModel.title" class="form-control" placeholder="Enter Title" type="text">
+              <input [(ngModel)]="ReaderModel.category" class="form-control" placeholder="Enter Title" type="text">
             </div> <!-- form-group end.// -->
             <div class="form-group input-group">
               <div class="input-group-prepend">
@@ -32,12 +37,9 @@
             </div>
             <div class="form-group input-group">
               <div class="input-group-prepend">
-                <span class="input-group-text"> <i style="width: 75px;">ReleaseDate</i> </span>
+                <span class="input-group-text"> <i style="width: 75px;">Price</i> </span>
               </div>
-              <div action="/action_page.php">
-                <input style="width: 300px;" class="form-control" [(ngModel)]="ReaderModel.releasedate"
-                  placeholder="Enter ReleaseDate" type="date">
-              </div>
+              <input [(ngModel)]="ReaderModel.price" class="form-control" placeholder="Enter price" type="number">
             </div> <!-- form-group// -->
             <div class="form-group">
               <button type="button" class="btn btn-secondary" (click)="SearchAuthorByReader()">Search</button>
@@ -69,10 +71,12 @@
     </div>
   </div>
   <div>
-    <app-grid-ui
-      [grid-columns]="[{'colName':'id'},{'colName':'title'},{'colName':'category'},{'colName':'author'},{'colName':'image'},{'colName':'price'},{'colName':'active'},{'colName':'contentdata'},{'colName':'publisher'},{'colName':'releasedate'}]"
+    <app-reader-grid
+    [grid-columns]="[{'colName':'Id'},{'colName':'AuthorId'},{'colName':'Title'},{'colName':'Author'},{'colName':'Price'},
+    {'colName':'Category'},{'colName':'Publisher'},{'colName':'Releasedate'},{'colName':'Active'},
+    {'colName':'Image'},{'colName':'Contentdata'}]"
       [grid-data]="ReaderModels" (grid-selected)="EditReader($event)" (grid-deleted)="DeleteAuthor($event)"
-      [readereditbutton]="readereditbutton" [readerdeletebutton]="readerdeletebutton"></app-grid-ui>
+      [readereditbutton]="readereditbutton" [readerdeletebutton]="readerdeletebutton"></app-reader-grid>
   </div>
 </ng-template>
 

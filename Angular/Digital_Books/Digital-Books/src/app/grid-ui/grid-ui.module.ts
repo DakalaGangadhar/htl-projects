@@ -5,13 +5,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { gridroutes } from '../routing/gridroutes';
+import { ReaderGridComponent } from './reader-grid/reader-grid.component';
 
 
 
 @NgModule({
   declarations: [
     GridUiComponent,
-    RegisterComponent
+    RegisterComponent,
+    ReaderGridComponent
   ],
   imports: [
     CommonModule,
@@ -19,6 +21,6 @@ import { gridroutes } from '../routing/gridroutes';
     ReactiveFormsModule,
     RouterModule.forChild(gridroutes)
   ],
-  exports:[GridUiComponent,CommonModule]
+  exports:[GridUiComponent,CommonModule,ReaderGridComponent]
 })
 export class GridUiModule { }

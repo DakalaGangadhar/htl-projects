@@ -1,14 +1,56 @@
-  <div class="container">
-    <form [formGroup]="UserModel.formUserGroup">
+<div *ngIf="readerGridFlag;else grid_content">
+  <div class="container">    
       <div class="row">
         <div class="col-lg-6 col-xl-6 col-md-2 col-sm-1">
-          <img src="/assets//d_g.gif" alt="Dital Book" style="width: 575px; height: 343px;"> 
+          <div *ngIf="readerTemplate;else other_content">
+            <div class="bg-image p-5 text-center shadow-1-strong rounded mb-3 text-white"
+            style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/003.webp');">
+  
+            <h4 class="card-title mb-3 text-center">Search Book</h4>
+            <div class="card-body mx-auto" style="max-width: 400px;">
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i style="width: 75px;">Category</i> </span>
+                </div>
+                <input [(ngModel)]="ReaderReaderModel.category" class="form-control" placeholder="Enter Category" type="text">
+              </div> <!-- form-group end.// -->
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i style="width: 75px;">Author</i> </span>
+                </div>
+                <input class="form-control" [(ngModel)]="ReaderReaderModel.author" placeholder="Enter Author" type="text">
+              </div><!-- form-group// -->
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i style="width: 75px;">Publisher</i> </span>
+                </div>
+                <input [(ngModel)]="ReaderReaderModel.publisher" class="form-control" placeholder="Enter Publisher" type="text">
+              </div>
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"> <i style="width: 75px;">Price</i> </span>
+                </div>
+                <input [(ngModel)]="ReaderReaderModel.price" class="form-control" placeholder="Enter price" type="number">
+              </div> <!-- form-group// -->
+              <div class="form-group">
+                <button type="button" class="btn btn-secondary" (click)="SearchByReader()">Search</button>
+              </div> <!-- form-group// -->
+            </div>
+  
+          </div>
         </div>
+        
+        <ng-template #other_content>
+          <img src="/assets//d_g.gif" alt="Dital Book" style="width: 575px; height: 343px;">
+        </ng-template>
+          
+        </div>
+        <!--Reader and Author login-->
         <div class="col-lg-6 col-xl-46 col-md-2 col-sm-1">
           <div class="card bg-light mt-6 ml-8 ">  
            
             <h4 class="card-title mt-5 text-center">Signin Account</h4>
-           
+            <form [formGroup]="UserModel.formUserGroup">
               <article class="card-body mx-auto" style="max-width: 400px; height: 256px;">
               <div class="form-group input-group mt-1">
                 <div class="input-group-prepend">
@@ -29,13 +71,32 @@
                 <button type="button" class="btn btn-primary" (click)="redirecttoregisterUser()">Register</button>
               </div> <!-- form-group// -->
           </article>
-         
+        </form>
         </div>
     
         </div>
       </div>
-    </form>
+   
    
     
   
   </div>
+</div>
+
+<ng-template #grid_content>
+  <div class="container">
+    <div class="form-group">
+      <button class="btn btn-success btn-lg float-right" type="submit" (click)="readerSearchBooks()">
+        Search Books
+      </button>
+    </div>
+  </div>
+  <app-reader-grid
+  [grid-columns]="[{'colName':'Id'},{'colName':'AuthorId'},{'colName':'Title'},{'colName':'Author'},{'colName':'Price'},
+  {'colName':'Category'},{'colName':'Publisher'},{'colName':'Releasedate'},{'colName':'Active'},
+  {'colName':'Image'},{'colName':'Contentdata'}]"
+    [grid-data]="ReaderModels" (grid-selected)="EditReader($event)" (grid-deleted)="DeleteAuthor($event)"
+    [readereditbutton]="readereditbutton" [readerdeletebutton]="readerdeletebutton"></app-reader-grid>
+</ng-template>
+
+ 

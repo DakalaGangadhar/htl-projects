@@ -26,7 +26,8 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     ReactiveFormsModule,
     RouterModule.forChild(readerroutes),
     HttpClientModule,
-    GridUiModule
+    GridUiModule,
+    ReactiveFormsModule
 
   ],
   providers: [ReaderServiceService,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorService,multi:true},{provide:JWT_OPTIONS,useValue:JWT_OPTIONS},JwtHelperService],

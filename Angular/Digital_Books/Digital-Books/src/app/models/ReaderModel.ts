@@ -1,7 +1,7 @@
 export class ReaderModel{
     id:any='';
-    title:string='';
+    category:string='';
     author:string='';
     publisher:string='';
-    releasedate:string='';
+    price:number=0;
 }

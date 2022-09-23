@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -7,12 +8,15 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class GridUiComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
+  public imageURL:any="https://localhost:44330/";
   gridColumns: Array<any> =new Array<any>();
   gridData: Array<any> =new Array<any>();
   @Input("readerdeletebutton") public readerdeletebutton:any;
   @Input("readereditbutton") public readereditbutton:any;
   public displayNone:any="";
+  public imagePath:any
+  
 
   ngOnInit(): void {
     if(this.readereditbutton){
@@ -21,7 +25,9 @@ export class GridUiComponent implements OnInit {
       this.displayNone=""
     }
   }
- 
+  getImage(input:any){
+    console.log(input)
+      }
 
 
 
@@ -32,6 +38,7 @@ export class GridUiComponent implements OnInit {
   @Input("grid-data")
   set SetGridData(_griddata:Array<any>){    
     this.gridData=_griddata;
+    console.log("grid-data loading",this.gridData);
   }
   @Output("grid-selected")
   emitemitter:EventEmitter<any>=new EventEmitter<any>();
@@ -45,27 +52,26 @@ export class GridUiComponent implements OnInit {
   deleteGrid(_deleted:any){
     this._emitemitter.emit(_deleted);
   }
-
-//-------------author-----------------------
-@Input("authorgrid-columns")
-set SetAuthorGridColumns(_gridColumn:Array<any>){
-  this.gridColumns=_gridColumn;
-}
-@Input("authorgrid-data")
-set SetAuthorGridData(_griddata:Array<any>){    
-  this.gridData=_griddata;
-}
-@Output("authorgrid-selected")
-authoremitemitter:EventEmitter<any>=new EventEmitter<any>();
-
-selectedAuthorGrid(_selected:any){
-  
-  this.emitemitter.emit(_selected);
-}
-@Output("authorgrid-deleted")
-_authoremitemitter:EventEmitter<any>=new EventEmitter<any>();
-deleteAuthorGrid(_deleted:any){
-  this._emitemitter.emit(_deleted);
-}
+   @Output("book-block")
+  _blockemitemitter:EventEmitter<any>=new EventEmitter<any>();
+  blockGrid(_block:any){
+    this._blockemitemitter.emit(_block);
+  }
+  @Output("book-unblock")
+  _unblockemitemitter:EventEmitter<any>=new EventEmitter<any>();
+  unblockGrid(_unblock:any){
+    this._unblockemitemitter.emit(_unblock);
+  }
+ // blockGrid(inputdata:any){
+   // console.log("block", inputdata);
+    //this.http.put(this.imageURL+this.block, inputdata.id).subscribe(res=>this.BlockUnBlock(res),res=>console.log(res))
+  //}
+  //unblockGrid(input:any){
+    //console.log("block", input);
+    //this.http.put(this.imageURL+this.unblock, input.id).subscribe(res=>this.BlockUnBlock(res),res=>console.log(res))
+  //}
+  //BlockUnBlock(input:any){
+    //console.log("block and unblock", input);
+  //}
 
 }

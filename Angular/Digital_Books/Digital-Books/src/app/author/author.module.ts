@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthorComponent } from './author/author.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { authorroutes } from '../routing/authorroutes';
 import { GridUiModule } from '../grid-ui/grid-ui.module';
@@ -21,6 +21,7 @@ import { TokenInterceptorService } from '../services/tokenInceptorservice';
     RouterModule.forChild(authorroutes),
     GridUiModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers:[AuthorServiceService,{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorService,multi:true}]
 })

@@ -11,7 +11,7 @@ namespace DigitalBooks.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
     public class UserDataController : ControllerBase
     {
         digitalbooksDBContext db = new digitalbooksDBContext();
@@ -58,18 +58,10 @@ namespace DigitalBooks.Controllers
         }
         [HttpGet]
         [Route("GetAuthorByReaderSearch")]
-        public IEnumerable<Book> GetAuthorByReaderSearch([FromQuery]string title,string author,string publicher,string releasedate)
+        public IEnumerable<Book> GetAuthorByReaderSearch([FromQuery]string category,string author,string publisher, int price)
         {
-            List<Book> getdata;
-            if (releasedate != null)
-            {
-                DateTime dateTimesr = Convert.ToDateTime(releasedate);
-                 getdata = db.Books.Where(x => x.Title == title || x.Author == author || x.Publisher == publicher || x.Releasedate == dateTimesr).ToList();
-            }
-            else
-            {
-               getdata = db.Books.Where(x => x.Title == title || x.Author == author || x.Publisher == publicher).ToList();
-            }
+            List<Book> getdata= db.Books.Where(x => x.Active == true && (x.Category == category || x.Author == author || x.Publisher == publisher || x.Price == price)).ToList();
+
             return getdata;
         }
     }

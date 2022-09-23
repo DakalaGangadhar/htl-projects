@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +19,7 @@ namespace DigitalBooks.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
     public class BooksController : ControllerBase
     {
         digitalbooksDBContext db = new digitalbooksDBContext();
@@ -36,52 +37,50 @@ namespace DigitalBooks.Controllers
         public IActionResult CreateBooks([FromForm]BookDataModel bookDataModel)
         {
             IActionResult response;
-            if (bookDataModel.Image.Length>0)
-            {
-                
-                if (!Directory.Exists(_environment.WebRootPath + "\\upload\\"))
+             Guid guid = Guid.NewGuid();
+                string pathImage = string.Empty;
+                var file = Request.Form.Files[0];
+                var foldername = "Images";
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), foldername);
+                if (bookDataModel.Image.Length > 0)
                 {
-                    Directory.CreateDirectory(_environment.WebRootPath + "\\upload\\"); 
-                }
-                using (FileStream fileStream=System.IO.File.Create(_environment.WebRootPath + "\\upload\\"+ bookDataModel.Image.FileName))
-                {
-                    bookDataModel.Image.CopyTo(fileStream);
-                    fileStream.Flush();
-                    string str = "\\upload\\" + bookDataModel.Image.FileName;
-                    fileStream.Dispose();
-                }
-                string path = "D:\\H_T_L\\Webapi\\DigitalBooks\\DigitalBooks\\wwwroot\\upload\\" + bookDataModel.Image.FileName;
-                byte[] imageArray = System.IO.File.ReadAllBytes(path);
-                string base64ImageRepresentation = Convert.ToBase64String(imageArray);
-                
+                string str = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
 
-                var data = db.Authorlogins.Where(x => x.Username == bookDataModel.Referemail).FirstOrDefault();
-                bookDataModel.Authorid = data.Id;
-                DateTime dateTime = DateTime.UtcNow;
-                bookDataModel.Releasedate = dateTime.ToString("dd/MM/yyyy"); //Convert.ToString(dateTime);
-                bookDataModel.baseImage = base64ImageRepresentation;
-                response = Unauthorized();
-                var userdata = AuthenticateUser(bookDataModel, false);
-                if (bookDataModel != null)
-                {
-                    var tokenString = GenerateToken(userdata);
-                    response = Ok(new { token = tokenString });
+                var fileName = guid+"_"+ str;// ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fullPath = Path.Combine(pathToSave, fileName);
+                    var dbPath = Path.Combine(foldername, fileName);
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                    var data = db.Authorlogins.Where(x => x.Username == bookDataModel.Referemail).FirstOrDefault();
+                    bookDataModel.Authorid = data.Id;
+                    DateTime dateTime = DateTime.UtcNow;
+                    bookDataModel.Releasedate = dateTime.ToString("dd/MM/yyyy"); //Convert.ToString(dateTime);
+                    bookDataModel.baseImage = dbPath;
+                    response = Unauthorized();
+                    var userdata = AuthenticateUser(bookDataModel, false);
+                    if (bookDataModel != null)
+                    {
+                        var tokenString = GenerateToken(userdata);
+                        response = Ok(new { token = tokenString });
+                    }
+                    return Ok(new { dbPath });
                 }
-                return response;
+                else
+                {
+                    return BadRequest();
+                }
+
             }
-            else
-            {
-                response = Ok(new { token = "failled" });
-            }
-            return response;
 
+        
 
-        }
         [HttpGet]
         [Route("getbooksdata")]
         public IEnumerable<Book> Get([FromQuery]string auhtoremail)
         {
-            List<Book> createbooks = db.Books.Where(x => x.Authormail == auhtoremail && x.Active==true).ToList();
+            List<Book> createbooks = db.Books.Where(x => x.Authormail == auhtoremail).ToList();
             BookDataModel bookDataModel = new BookDataModel();
             
             return createbooks;
@@ -151,6 +150,46 @@ namespace DigitalBooks.Controllers
             db.SaveChanges();
             var response = new { Status = "Success" };
             return Ok(response);
+        }
+        [HttpPut]
+        [Route("book-block")]
+        public IActionResult BookBlock([FromBody] int id)
+        {
+            try
+            {
+                var bookblobk = db.Books.Where(s => s.Id == id).FirstOrDefault();
+                bookblobk.Active = false;
+                db.Books.Update(bookblobk);
+                db.SaveChanges();
+                var response = new { Status = "Success" };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return Ok(ex);
+            }
+           
+            
+        }
+        [HttpPut]
+        [Route("book-unblock")]
+        public IActionResult BookUnBlock([FromBody] int id)
+        {
+            try
+            {
+                var bookunblobk = db.Books.Where(s => s.Id == id).FirstOrDefault();
+                bookunblobk.Active = true;
+                db.Books.Update(bookunblobk);
+                db.SaveChanges();
+                var response = new { Status = "Success" };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return Ok(ex);
+            }
+            
+
         }
     }
 }

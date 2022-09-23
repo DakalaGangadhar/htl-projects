@@ -10,6 +10,8 @@ export class AuthorServiceService {
   _GetAuthorByReaderSearch="https://localhost:44330/api/Books/getbooksdata";
   _BooksDelete="https://localhost:44330/api/Books/book-delete";
   public url:any='https://localhost:44330/api/Books/author-create-book';
+  public block:any='https://localhost:44330/api/Books/book-block';
+  public unblock:any='https://localhost:44330/api/Books/book-unblock';
 
   
   constructor(private http:HttpClient) { }
@@ -30,6 +32,17 @@ CreateBooks(){
   }
   logginIn(){
     return !!localStorage.getItem('token');
+  }
+  BlockGridService(id:any){
+    this.http.put(this.block, id).subscribe(res=>this.BlockUnBlock(res),res=>console.log(res))
+
+  }
+  UnBlockGridService(id:any){
+    this.http.put(this.unblock, id).subscribe(res=>this.BlockUnBlock(res),res=>console.log(res))
+  }
+  BlockUnBlock(input:any){
+    console.log(input);
+
   }
   
 }
