@@ -5,8 +5,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MasterHomeComponent } from './master-home/master-home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Mainroutes } from '../routing/mainroutes';
+import { TokenInterceptorService } from '../services/tokenInceptorservice';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 
 
@@ -23,7 +25,7 @@ import { Mainroutes } from '../routing/mainroutes';
     RouterModule.forRoot(Mainroutes),
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorService,multi:true},{provide:JWT_OPTIONS,useValue:JWT_OPTIONS},JwtHelperService],
   bootstrap: [MasterComponent]
 })
 export class MasterModule { }

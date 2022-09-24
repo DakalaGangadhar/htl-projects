@@ -1,5 +1,5 @@
 <div *ngIf="readerGridFlag;else grid_content">
-  <div class="container">    
+  <div class="container">
       <div class="row">
         <div class="col-lg-6 col-xl-6 col-md-2 col-sm-1">
           <div *ngIf="readerTemplate;else other_content">
@@ -76,10 +76,6 @@
     
         </div>
       </div>
-   
-   
-    
-  
   </div>
 </div>
 
@@ -96,7 +92,10 @@
   {'colName':'Category'},{'colName':'Publisher'},{'colName':'Releasedate'},{'colName':'Active'},
   {'colName':'Image'},{'colName':'Contentdata'}]"
     [grid-data]="ReaderModels" (grid-selected)="EditReader($event)" (grid-deleted)="DeleteAuthor($event)"
-    [readereditbutton]="readereditbutton" [readerdeletebutton]="readerdeletebutton"></app-reader-grid>
+    [readereditbutton]="readereditbutton" [readerdeletebutton]="readerdeletebutton" (grid-bookbuy)="ReaderBuyABook($event)"></app-reader-grid>
 </ng-template>
+
+
+<!--(grid-bookbuy)="ReaderBuyABook($event)"-->
 
  

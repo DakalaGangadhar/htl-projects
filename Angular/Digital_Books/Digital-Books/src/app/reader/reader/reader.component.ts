@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthorModel } from 'src/app/models/AuthorModel';
+import { OrderModel } from 'src/app/models/OrderModel';
 import { ReaderModel } from 'src/app/models/ReaderModel';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 import { ReaderServiceService } from 'src/app/services/reader-service.service';
@@ -15,13 +17,20 @@ export class ReaderComponent implements OnInit {
 
   ReaderModel:ReaderModel=new ReaderModel();
   ReaderModels:Array<ReaderModel>=new Array<ReaderModel>();
+  AuthorModelStore: AuthorModel = new AuthorModel();
+  OrderModel: OrderModel = new OrderModel();
   public url = "https://localhost:44330/api/UserData";
+  public imageBaseUrl:any="https://localhost:44330/";
   public id_data:string='';
   public isEdit=false;
-  public readerFlag:boolean=true;
+  public readerSearchdiv:boolean=true;
+  public readerGridDiv:boolean=false;
+  public readerBookBuyDiv:boolean=false;
 
   public readereditbutton:boolean=true;
   public readerdeletebutton:boolean=true;
+  public bookBuy:boolean=false;
+
   constructor(private http:HttpClient,private _router:Router,private _service:ReaderServiceService,private jwt: JwtHelperService, private _auth: LoginServiceService) { }
 public name:any='';
   ngOnInit(): void {
@@ -44,7 +53,9 @@ public name:any='';
   
   SearchAuthorByReader(){   
    this._service.GetAuthorByReaderSearch(this.ReaderModel).subscribe(res=>this.Success(res),res=>console.log(res)); 
-   this.readerFlag=false; 
+   this.readerSearchdiv=false; 
+   this.readerGridDiv=true;
+   this.readerBookBuyDiv=false;
   }
   
   EditReader(input:any){
@@ -71,7 +82,36 @@ public name:any='';
     this._router.navigate(['reader/add']);
   }
   dirSearchBooks(){
-    this.readerFlag=true; 
+    this.readerSearchdiv=true; 
+    this.readerGridDiv=false;
+   this.readerBookBuyDiv=false;
+  }
+  ReaderBuyABook(bookbuy:any){
+    this.AuthorModelStore=bookbuy;
+    console.log("Data getting",this.name);
+    console.log("AuthorModelStore",this.AuthorModelStore);
+    this.readerSearchdiv=false; 
+   this.readerGridDiv=false;
+   this.readerBookBuyDiv=true;
+    if(this.name!=""){
+
+      console.log("user login into site");
+
+    }else{
+      this._router.navigate(['reader/login']);
+    }
+  }
+  viewBook(){
+    console.log("view book");
+    this.readerSearchdiv=false; 
+    this.readerGridDiv=true;
+    this.readerBookBuyDiv=false;
+  }
+  searchBook(){
+    console.log("search book");
+    this.readerSearchdiv=true; 
+    this.readerGridDiv=false;
+    this.readerBookBuyDiv=false;
   }
 
 }

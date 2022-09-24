@@ -4,6 +4,21 @@
     "D:\\H_T_L\\Webapi\\Microservices\\Microservices\\Order\\Order.csproj": {}
   },
   "projects": {
+    "D:\\H_T_L\\Webapi\\Microservices\\Microservices\\Common\\Common.csproj": {
+      "restore": {
+        "projectUniqueName": "D:\\H_T_L\\Webapi\\Microservices\\Microservices\\Common\\Common.csproj",
+        "projectName": "Common",
+        "projectPath": "D:\\H_T_L\\Webapi\\Microservices\\Microservices\\Common\\Common.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "D:\\H_T_L\\Webapi\\Microservices\\Microservices\\Order\\Order.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -33,7 +48,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\H_T_L\\Webapi\\Microservices\\Microservices\\Common\\Common.csproj": {
+                "projectPath": "D:\\H_T_L\\Webapi\\Microservices\\Microservices\\Common\\Common.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

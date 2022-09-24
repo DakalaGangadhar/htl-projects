@@ -18,7 +18,8 @@ namespace DigitalBooks.Controllers
         [HttpGet]
         public IEnumerable<Author> Get()
         {
-            return db.Authors;
+            var data = db.Authors;
+            return data;
         }
         [HttpPost]
         public IActionResult Post([FromBody] Author author)

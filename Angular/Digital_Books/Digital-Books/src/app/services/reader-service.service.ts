@@ -17,6 +17,7 @@ export class ReaderServiceService {
     _readerModel.publisher;
     _readerModel.price;
    
+    
     return this.http.get<any>(this._GetAuthorByReaderSearch+'?category='+ _readerModel.category +'&author='+ _readerModel.author+'&publisher='+_readerModel.publisher+'&price='+ _readerModel.price);
    // return this.http.get<any>(this._GetAuthorByReaderSearch+'?title='+ _readerModel.title);
   }

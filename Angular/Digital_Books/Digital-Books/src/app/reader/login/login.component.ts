@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthorModel } from 'src/app/models/AuthorModel';
 import { ReaderModel } from 'src/app/models/ReaderModel';
 import { UserModel } from 'src/app/models/UserModel';
 import { LoginServiceService } from 'src/app/services/login-service.service';
@@ -13,11 +15,12 @@ import { ReaderServiceService } from 'src/app/services/reader-service.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http:HttpClient,private _serviceLogin:LoginServiceService,private _router:Router,private _readerservice:ReaderServiceService) { }
+  constructor(private http:HttpClient,private _serviceLogin:LoginServiceService,private _router:Router,private _readerservice:ReaderServiceService,private jwt: JwtHelperService) { }
 
   UserModel:UserModel=new UserModel();
   ReaderReaderModel:ReaderModel=new ReaderModel();
   ReaderModels:Array<ReaderModel>=new Array<ReaderModel>();
+  AuthorModelStore: AuthorModel = new AuthorModel();
   public domain:any=window.location.href;
   domainArray:Array<any>=new Array<any>();
    public readerTemplate:boolean=true;
@@ -29,7 +32,9 @@ export class LoginComponent implements OnInit {
 
   public readereditbutton:boolean=true;
   public readerdeletebutton:boolean=true;
-  ngOnInit(): void {
+  public popupModel:any=false;
+  public name:any='';
+  ngOnInit(): void {    
     this.domainArray=window.location.href.split("/", 5);
     if(this.domainArray[3]=="reader"){
       this.readerTemplate=true;
@@ -97,10 +102,22 @@ export class LoginComponent implements OnInit {
   }
   readerSearchBooks(){
     this.readerGridFlag=true;
+   
   }
   hasError(typeofValidator:string,controlname:string):Boolean{
     
     return this.UserModel.formUserGroup.controls[controlname].hasError(typeofValidator);
+  }
+  ReaderBuyABook(bookbuy:any){
+    this.AuthorModelStore=bookbuy;
+    console.log("Data getting",this.name);
+    console.log("AuthorModelStore",this.AuthorModelStore);
+    if(this.name!=""){
+
+    }else{
+     this.readerGridFlag=true;
+     this.popupModel=true;
+    }
   }
   
 }

@@ -52,6 +52,11 @@ D:\H_T_L\Webapi\Microservices\Microservices\Catelog\bin\Debug\netcoreapp3.1\runt
 D:\H_T_L\Webapi\Microservices\Microservices\Catelog\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\H_T_L\Webapi\Microservices\Microservices\Catelog\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\H_T_L\Webapi\Microservices\Microservices\Catelog\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\H_T_L\Webapi\Microservices\Microservices\Catelog\bin\Debug\netcoreapp3.1\Common.dll
+D:\H_T_L\Webapi\Microservices\Microservices\Catelog\bin\Debug\netcoreapp3.1\Consul.dll
+D:\H_T_L\Webapi\Microservices\Microservices\Catelog\bin\Debug\netcoreapp3.1\Common.pdb
+D:\H_T_L\Webapi\Microservices\Microservices\Catelog\bin\Debug\netcoreapp3.1\Common.dll.config
+D:\H_T_L\Webapi\Microservices\Microservices\Catelog\obj\Debug\netcoreapp3.1\Catelog.csproj.AssemblyReference.cache
 D:\H_T_L\Webapi\Microservices\Microservices\Catelog\obj\Debug\netcoreapp3.1\Catelog.GeneratedMSBuildEditorConfig.editorconfig
 D:\H_T_L\Webapi\Microservices\Microservices\Catelog\obj\Debug\netcoreapp3.1\Catelog.AssemblyInfoInputs.cache
 D:\H_T_L\Webapi\Microservices\Microservices\Catelog\obj\Debug\netcoreapp3.1\Catelog.AssemblyInfo.cs
@@ -62,6 +67,7 @@ D:\H_T_L\Webapi\Microservices\Microservices\Catelog\obj\Debug\netcoreapp3.1\stat
 D:\H_T_L\Webapi\Microservices\Microservices\Catelog\obj\Debug\netcoreapp3.1\staticwebassets\Catelog.StaticWebAssets.xml
 D:\H_T_L\Webapi\Microservices\Microservices\Catelog\obj\Debug\netcoreapp3.1\scopedcss\bundle\Catelog.styles.css
 D:\H_T_L\Webapi\Microservices\Microservices\Catelog\obj\Debug\netcoreapp3.1\Catelog.RazorTargetAssemblyInfo.cache
+D:\H_T_L\Webapi\Microservices\Microservices\Catelog\obj\Debug\netcoreapp3.1\Catelog.csproj.CopyComplete
 D:\H_T_L\Webapi\Microservices\Microservices\Catelog\obj\Debug\netcoreapp3.1\Catelog.dll
 D:\H_T_L\Webapi\Microservices\Microservices\Catelog\obj\Debug\netcoreapp3.1\Catelog.pdb
 D:\H_T_L\Webapi\Microservices\Microservices\Catelog\obj\Debug\netcoreapp3.1\Catelog.genruntimeconfig.cache

@@ -6,6 +6,9 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
 import { gridroutes } from '../routing/gridroutes';
 import { ReaderGridComponent } from './reader-grid/reader-grid.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from '../services/tokenInceptorservice';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 
 
@@ -21,6 +24,7 @@ import { ReaderGridComponent } from './reader-grid/reader-grid.component';
     ReactiveFormsModule,
     RouterModule.forChild(gridroutes)
   ],
+  providers:[{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptorService,multi:true},{provide:JWT_OPTIONS,useValue:JWT_OPTIONS},JwtHelperService],
   exports:[GridUiComponent,CommonModule,ReaderGridComponent]
 })
 export class GridUiModule { }

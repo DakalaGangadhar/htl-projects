@@ -1,4 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthorModel } from 'src/app/models/AuthorModel';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
   selector: 'app-reader-grid',
@@ -7,8 +11,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ReaderGridComponent implements OnInit {
 
-  constructor() { }
+  constructor(private jwt: JwtHelperService, private _auth: LoginServiceService,private _router:Router) { }
   
+  AuthorModelStore: AuthorModel = new AuthorModel();
   public imageURL:any="https://localhost:44330/";
   gridColumns: Array<any> =new Array<any>();
   gridData: Array<any> =new Array<any>();
@@ -16,8 +21,13 @@ export class ReaderGridComponent implements OnInit {
   @Input("readereditbutton") public readereditbutton:any;
   public displayNone:any="";
   public imagePath:any
+  public name:any='';
 
   ngOnInit(): void {
+    this.name=this.jwt.decodeToken(this._auth.getToken()?.toString()).unique_name;
+    console.log(this.jwt.decodeToken(this._auth.getToken()?.toString()));
+    console.log("Data getting",this.name);
+
     if(this.readereditbutton){
       this.displayNone="disabled-link"
     }else{
@@ -51,9 +61,15 @@ export class ReaderGridComponent implements OnInit {
   deleteGrid(_deleted:any){
     this._emitemitter.emit(_deleted);
   }
-  buyABook(){
-    
+  @Output("grid-bookbuy")
+  _bookbuyemitemitter:EventEmitter<any>=new EventEmitter<any>();
+  buyABook(_bookbuy:any){
+    debugger;
+    this._bookbuyemitemitter.emit(_bookbuy);
   }
+  
+
+
  
 
 }

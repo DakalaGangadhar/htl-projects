@@ -1,5 +1,6 @@
 using Catelog.Models;
 using Catelog.Services;
+using Common;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,7 @@ namespace Catelog
             services.AddScoped<ICatelogService, CatelogService>();
             services.AddDbContext<catelogDBContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSwaggerGen();
+            services.AddConsulConfig(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,7 +45,7 @@ namespace Catelog
             }
 
             app.UseHttpsRedirection();
-
+            app.UseConsul(Configuration);
             app.UseRouting();
 
             app.UseAuthorization();

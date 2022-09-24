@@ -20,6 +20,9 @@ namespace DigitalBooks.Models
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Authorlogin> Authorlogins { get; set; }
         public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<Bookcategory> Bookcategories { get; set; }
+        public virtual DbSet<Cardtype> Cardtypes { get; set; }
+        public virtual DbSet<Orderbook> Orderbooks { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -102,7 +105,27 @@ namespace DigitalBooks.Models
                     .HasColumnName("updatedate");
             });
 
-           
+            modelBuilder.Entity<Bookcategory>(entity =>
+            {
+                entity.HasKey(e => e.CategoryId);
+
+                entity.ToTable("bookcategory");
+            });
+
+            modelBuilder.Entity<Cardtype>(entity =>
+            {
+                entity.ToTable("cardtype");
+            });
+
+            modelBuilder.Entity<Orderbook>(entity =>
+            {
+                entity.HasKey(e => e.OrderId);
+
+                entity.ToTable("orderbook");
+
+                entity.Property(e => e.Cvv).HasColumnName("CVV");
+            });
+
             modelBuilder.Entity<User>(entity =>
             {
                 entity.ToTable("user");
