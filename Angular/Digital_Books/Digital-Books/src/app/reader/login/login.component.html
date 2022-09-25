@@ -12,7 +12,31 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"> <i style="width: 75px;">Category</i> </span>
                 </div>
-                <input [(ngModel)]="ReaderReaderModel.category" class="form-control" placeholder="Enter Category" type="text">
+               <!-- <input [(ngModel)]="ReaderReaderModel.category" class="form-control" placeholder="Enter Category" type="text">-->
+                <select class="form-select" [(ngModel)]="ReaderReaderModel.category" placeholder="Select Category"
+                aria-label="Default select example">
+                <option selected>Select Category</option>
+                <option value="1">Agriculture</option>
+                <option value="2">Art & Culture</option>
+                <option value="3">Commerce</option>
+                <option value="4">Communications & IT</option>
+                <option value="5">Defence</option>
+                <option value="6">Education</option>
+                <option value="7">Environment & Forest</option>
+                <option value="8">Finance & Taxes</option>
+                <option value="9">Food & Public Distribution</option>
+                <option value="10">Governance & Administration</option>
+                <option value="11">Health & Family Welfare</option>
+                <option value="12">Industries</option>
+                <option value="13">Infrastructure</option>
+                <option value="14">Labour & Employment</option>
+                <option value="15">Law & Justice</option>
+                <option value="16">Science & Technology</option>
+                <option value="17">Social Development</option>
+                <option value="18">Travel & Tourism</option>
+                <option value="19">Sports</option>
+                <option value="20">History</option>
+              </select>
               </div> <!-- form-group end.// -->
               <div class="form-group input-group">
                 <div class="input-group-prepend">

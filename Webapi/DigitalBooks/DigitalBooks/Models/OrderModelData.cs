@@ -14,5 +14,7 @@ namespace DigitalBooks.Models
         public string CardId { get; set; }
         public int? BookIb { get; set; }
         public string CategoryId { get; set; }
+        public string CategoryName { get; set; }
+        public string ReaderMail { get; set; }
     }
 }

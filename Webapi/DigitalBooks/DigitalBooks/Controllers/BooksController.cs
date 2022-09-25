@@ -32,7 +32,7 @@ namespace DigitalBooks.Controllers
             _config = config;
             _environment = environment;
         }
-        [HttpPost]
+        [HttpPost, DisableRequestSizeLimit]
         [Route("create-books")]
         public IActionResult CreateBooks([FromForm] BookDataModel bookDataModel)
         {
@@ -106,7 +106,8 @@ namespace DigitalBooks.Controllers
                                        active = o.Active,
                                        image = o.Image,
                                        contentdata = o.Contentdata,
-                                       authormail = o.Authormail
+                                       authormail = o.Authormail,
+                                       categoryid=i.CategoryId
                                    }).ToList();
                 return createbooks;
 
@@ -167,7 +168,7 @@ namespace DigitalBooks.Controllers
             var response = new { Status = "Success" };
             return Ok(response);
         }
-        [HttpPut]
+        [HttpPut, DisableRequestSizeLimit]
         [Route("bookupdate")]
         public IActionResult put([FromForm] BookDataModel bookDataModel)
         {

@@ -12,13 +12,15 @@ import { ReaderServiceService } from '../services/reader-service.service';
 
 import { TokenInterceptorService } from '../services/tokenInceptorservice';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { MyOrderComponent } from './my-order/my-order.component';
 
 
 
 @NgModule({
   declarations: [
     ReaderComponent,
-    LoginComponent
+    LoginComponent,
+    MyOrderComponent
   ],
   imports: [
     CommonModule,

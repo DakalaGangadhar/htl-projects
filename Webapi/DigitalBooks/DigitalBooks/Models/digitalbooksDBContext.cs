@@ -17,7 +17,6 @@ namespace DigitalBooks.Models
         {
         }
 
-        public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Authorlogin> Authorlogins { get; set; }
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Bookcategory> Bookcategories { get; set; }
@@ -37,33 +36,6 @@ namespace DigitalBooks.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
-
-            modelBuilder.Entity<Author>(entity =>
-            {
-                entity.ToTable("author");
-
-                entity.Property(e => e.Active).HasColumnName("active");
-
-                entity.Property(e => e.Author1).HasColumnName("author");
-
-                entity.Property(e => e.Category).HasColumnName("category");
-
-                entity.Property(e => e.Contentdata).HasColumnName("contentdata");
-
-                entity.Property(e => e.Image).HasColumnName("image");
-
-                entity.Property(e => e.Price)
-                    .HasColumnType("money")
-                    .HasColumnName("price");
-
-                entity.Property(e => e.Publisher).HasColumnName("publisher");
-
-                entity.Property(e => e.Releasedate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("releasedate");
-
-                entity.Property(e => e.Title).HasColumnName("title");
-            });
 
             modelBuilder.Entity<Authorlogin>(entity =>
             {
@@ -120,6 +92,8 @@ namespace DigitalBooks.Models
                 entity.ToTable("orderbook");
 
                 entity.Property(e => e.Cvv).HasColumnName("CVV");
+
+                entity.Property(e => e.Userid).HasColumnName("userid");
             });
 
             modelBuilder.Entity<User>(entity =>

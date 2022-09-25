@@ -15,5 +15,6 @@ namespace DigitalBooks.Models
         public int? CardId { get; set; }
         public int? BookIb { get; set; }
         public int? CategoryId { get; set; }
+        public int? Userid { get; set; }
     }
 }

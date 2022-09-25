@@ -13,6 +13,7 @@ export class AuthorModel{
     releasedate:any='2022-09-18 07:34:25.080';
     authorid:number=0;
     referemail:any='';
+    categoryid:number=0;
   /*  public formAuthorGroup:FormGroup;
     constructor(){
     var _builder=new FormBuilder();
