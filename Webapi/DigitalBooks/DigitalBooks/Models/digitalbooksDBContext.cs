@@ -72,7 +72,7 @@ namespace DigitalBooks.Models
 
             modelBuilder.Entity<Book>(entity =>
             {
-                entity.ToTable("Book");
+                entity.ToTable("book");
 
                 entity.Property(e => e.Active).HasColumnName("active");
 
@@ -82,14 +82,14 @@ namespace DigitalBooks.Models
 
                 entity.Property(e => e.Authormail).HasColumnName("authormail");
 
-                entity.Property(e => e.Category).HasColumnName("category");
+                entity.Property(e => e.Categoryid).HasColumnName("categoryid");
 
                 entity.Property(e => e.Contentdata).HasColumnName("contentdata");
 
                 entity.Property(e => e.Image).HasColumnName("image");
 
                 entity.Property(e => e.Price)
-                    .HasColumnType("decimal(8, 2)")
+                    .HasColumnType("decimal(18, 2)")
                     .HasColumnName("price");
 
                 entity.Property(e => e.Publisher).HasColumnName("publisher");
@@ -99,10 +99,6 @@ namespace DigitalBooks.Models
                     .HasColumnName("releasedate");
 
                 entity.Property(e => e.Title).HasColumnName("title");
-
-                entity.Property(e => e.Updatedate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("updatedate");
             });
 
             modelBuilder.Entity<Bookcategory>(entity =>

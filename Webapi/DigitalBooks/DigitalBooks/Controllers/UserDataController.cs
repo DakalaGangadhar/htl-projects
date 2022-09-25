@@ -59,9 +59,9 @@ namespace DigitalBooks.Controllers
         }
         [HttpGet]
         [Route("GetAuthorByReaderSearch")]
-        public IEnumerable<Book> GetAuthorByReaderSearch([FromQuery]string category,string author,string publisher, int price)
+        public IEnumerable<Book> GetAuthorByReaderSearch([FromQuery] int category, string author, string publisher, int price)
         {
-            List<Book> getdata= db.Books.Where(x => x.Active == true && (x.Category == category || x.Author == author || x.Publisher == publisher || x.Price == price)).ToList();
+            List<Book> getdata = db.Books.Where(x => x.Active == true && (x.Categoryid == category || x.Author == author || x.Publisher == publisher || x.Price == price)).ToList();
 
             return getdata;
         }

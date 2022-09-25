@@ -1,10 +1,11 @@
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
 export class AuthorModel{
+    id:string='';
     title:string='';
     category:string='';
     author:string='';
-    image!: FormData;
+    image!: string;
     price:string='';
     active:any='';
     contentdata:string='';
@@ -12,7 +13,7 @@ export class AuthorModel{
     releasedate:any='2022-09-18 07:34:25.080';
     authorid:number=0;
     referemail:any='';
-    public formAuthorGroup:FormGroup;
+  /*  public formAuthorGroup:FormGroup;
     constructor(){
     var _builder=new FormBuilder();
     this.formAuthorGroup=_builder.group({});
@@ -56,6 +57,6 @@ export class AuthorModel{
         this.formAuthorGroup.addControl("ActiveControl",new FormControl('',Validators.compose(validationActive)));   
 
         
-    }
+    }*/
 }
 

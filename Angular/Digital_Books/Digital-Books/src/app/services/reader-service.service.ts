@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, map, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ export class ReaderServiceService {
   public _token:any='';
   _GetAuthorByReaderSearch="https://localhost:44330/api/UserData/GetAuthorByReaderSearch/";
   _BooksDelete="https://localhost:44330/api/UserData";
+  _CreateBook="https://localhost:44330/api/Order/create-order";
   constructor(private http:HttpClient) { }
 
 
@@ -29,5 +31,21 @@ export class ReaderServiceService {
   }
   logginIn(){
     return !!localStorage.getItem('token');
+  }
+  CreateBookOrder(createorder:any){
+
+    return this.http.post(this._CreateBook,createorder)
+      .pipe(map((data: any) => {     
+        return data;
+      })
+      ,
+       catchError((error) => {    // handle error
+         
+          if (error.status == 404) {
+            //Handle Response code here
+          }
+          return throwError(error);
+        })
+      );
   }
 }

@@ -34,19 +34,21 @@ namespace DigitalBooks.Controllers
         }
         [HttpPost]
         [Route("create-books")]
-        public IActionResult CreateBooks([FromForm]BookDataModel bookDataModel)
+        public IActionResult CreateBooks([FromForm] BookDataModel bookDataModel)
         {
-            IActionResult response;
-             Guid guid = Guid.NewGuid();
+            try
+            {
+                IActionResult response;
+                Guid guid = Guid.NewGuid();
                 string pathImage = string.Empty;
                 var file = Request.Form.Files[0];
                 var foldername = "Images";
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), foldername);
                 if (bookDataModel.Image.Length > 0)
                 {
-                string str = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    string str = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
 
-                var fileName = guid+"_"+ str;// ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fileName = guid + "_" + str;// ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
                     var fullPath = Path.Combine(pathToSave, fileName);
                     var dbPath = Path.Combine(foldername, fileName);
                     using (var stream = new FileStream(fullPath, FileMode.Create))
@@ -71,32 +73,66 @@ namespace DigitalBooks.Controllers
                 {
                     return BadRequest();
                 }
-
             }
+            catch (Exception ex)
+            {
+                return Ok(ex);
+            }
+           
 
-        
+        }
+
+
 
         [HttpGet]
         [Route("getbooksdata")]
-        public IEnumerable<Book> Get([FromQuery]string auhtoremail)
+        public dynamic Get([FromQuery] string auhtoremail)
         {
-            List<Book> createbooks = db.Books.Where(x => x.Authormail == auhtoremail).ToList();
-            BookDataModel bookDataModel = new BookDataModel();
+            try
+            {
+                var createbooks = (from o in db.Books
+                                   join i in db.Bookcategories
+                                   on o.Categoryid equals i.CategoryId
+                                   where (o.Authormail == auhtoremail)
+                                   select new
+                                   {
+                                       id = o.Id,
+                                       title = o.Title,
+                                       Author = o.Author,
+                                       Price = o.Price,
+                                       category = i.CategoryName,
+                                       publisher = o.Publisher,
+                                       releasedate=o.Releasedate,
+                                       active = o.Active,
+                                       image = o.Image,
+                                       contentdata = o.Contentdata,
+                                       authormail = o.Authormail
+                                   }).ToList();
+                return createbooks;
+
+
+            }
+            catch (Exception ex)
+            {
+
+                return ex;
+            }
             
-            return createbooks;
+
+
         }
         private BookDataModel AuthenticateUser(BookDataModel createbook, bool IsRegister)
         {
             BookDataModel createbook1 = new BookDataModel();
             Book createbooklist = new Book();
             //createbooklist.Image = createbook.Image;
-            string price = (createbook.Price != null || createbook.Price != "") ? createbook.Price : "0.00";
+            string price = Convert.ToString(createbook.Price);
             createbooklist.Price = Decimal.Parse(price);
             createbooklist.Publisher = createbook.Publisher;
             createbooklist.Title = createbook.Title;
             createbooklist.Releasedate = DateTime.Parse(createbook.Releasedate);
             createbooklist.Contentdata = createbook.Contentdata;
-            createbooklist.Category = createbook.Category;
+            createbooklist.Categoryid =Convert.ToInt32(createbook.Category);
             createbooklist.Author = createbook.Author;
             createbooklist.Active = Convert.ToBoolean(createbook.Active);
             createbooklist.Authorid = createbook.Authorid;
@@ -133,23 +169,56 @@ namespace DigitalBooks.Controllers
         }
         [HttpPut]
         [Route("bookupdate")]
-        public IActionResult put([FromBody] BookDataModel createbook)
+        public IActionResult put([FromForm] BookDataModel bookDataModel)
         {
-            var authorUpdate = db.Books.Where(s => s.Id == createbook.Id).FirstOrDefault();
-            authorUpdate.Title = createbook.Title;
-            authorUpdate.Publisher = createbook.Publisher;
-            authorUpdate.Price = Decimal.Parse(createbook.Price);
-            //authorUpdate.Image = createbook.Image;
-            authorUpdate.Category = createbook.Category;
-            authorUpdate.Contentdata = createbook.Contentdata;
-            authorUpdate.Active = Convert.ToBoolean(createbook.Active);
-            authorUpdate.Author = createbook.Author;
-            db.Books.Update(authorUpdate);
+            try
+            {
+                var authorUpdate = db.Books.Where(s => s.Id == bookDataModel.Id).FirstOrDefault();
+                Guid guid = Guid.NewGuid();
+                string pathImage = string.Empty;
+                var file = Request.Form.Files[0];
+                var foldername = "Images";
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), foldername);
+                if (bookDataModel.Image.Length > 0)
+                {
+                    string str = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
 
+                    var fileName = guid + "_" + str;// ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fullPath = Path.Combine(pathToSave, fileName);
+                    var dbPath = Path.Combine(foldername, fileName);
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }                   
+                    DateTime dateTime = DateTime.UtcNow; //Convert.ToString(dateTime);
+                    bookDataModel.baseImage = dbPath;
 
-            db.SaveChanges();
-            var response = new { Status = "Success" };
-            return Ok(response);
+                    authorUpdate.Title = bookDataModel.Title;
+                    authorUpdate.Image = dbPath;
+                    authorUpdate.Releasedate = dateTime;
+                    authorUpdate.Publisher = bookDataModel.Publisher;
+                    string price = Convert.ToString(bookDataModel.Price);
+                    authorUpdate.Price = Decimal.Parse(price);
+                    //authorUpdate.Image = createbook.Image;
+                    authorUpdate.Categoryid = Convert.ToInt32(bookDataModel.Category);
+                    authorUpdate.Contentdata = bookDataModel.Contentdata;
+                    authorUpdate.Active = Convert.ToBoolean(bookDataModel.Active);
+                    authorUpdate.Author = bookDataModel.Author;
+                    db.Books.Update(authorUpdate);
+
+                    db.SaveChanges();
+                    var response = new { Status = "Success" };
+                    return Ok(response);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch (Exception ex)
+            {
+                return Ok(ex);
+            }                
         }
         [HttpPut]
         [Route("book-block")]
@@ -168,8 +237,8 @@ namespace DigitalBooks.Controllers
             {
                 return Ok(ex);
             }
-           
-            
+
+
         }
         [HttpPut]
         [Route("book-unblock")]
@@ -188,7 +257,7 @@ namespace DigitalBooks.Controllers
             {
                 return Ok(ex);
             }
-            
+
 
         }
     }

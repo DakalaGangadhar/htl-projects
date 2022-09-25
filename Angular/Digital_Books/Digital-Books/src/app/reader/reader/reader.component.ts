@@ -113,5 +113,25 @@ public name:any='';
     this.readerGridDiv=false;
     this.readerBookBuyDiv=false;
   }
+  Purchase(){
+   console.log("buy data",this.AuthorModelStore);
+   console.log("OrderModel",this.OrderModel);
+   var createOrder={
+    Reader :this.AuthorModelStore.referemail,
+    CardHolderName:this.OrderModel.CardHolderName,
+    CardNumber:this.OrderModel.CardName,
+    ExpireDate:this.OrderModel.Expires,
+    Cvv:this.OrderModel.CVV,
+    CardId:this.OrderModel.Cardtype,
+    BookIb:this.AuthorModelStore.id
+   }
+   this._service.CreateBookOrder(createOrder).subscribe(res=>this.CreateBookSuccess(res),res=>console.log(res));
+  }
+  CreateBookSuccess(input:any){
+    console.log(input);
+    this.readerSearchdiv=false; 
+    this.readerGridDiv=true;
+    this.readerBookBuyDiv=false;
+  }
 
 }

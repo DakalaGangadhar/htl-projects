@@ -56,13 +56,14 @@ public readerdeletebutton:boolean=false;
     uploadData.append('Contentdata', _authorData.contentdata);
     uploadData.append('Publisher', _authorData.publisher);
     uploadData.append('Referemail', _authorData.referemail);
+    uploadData.append('Id', this.AuthorModel.id);
 
 
     
     if(this.isEdit){
       this.activeBool= String(this.AuthorModel.active);
       this.AuthorModel.active=this.activeBool;
-      this.http.put(this.updateurl,_authorData).subscribe(res=>this.PostSuccess(res),res=>console.log(res))
+      this.http.put(this.updateurl,uploadData).subscribe(res=>this.PostSuccess(res),res=>console.log(res))
     }else{
       this.http.post("https://localhost:44330/api/Books/create-books",uploadData).subscribe(res=>this.PostSuccess(res),res=>console.log(res));
     }
@@ -81,16 +82,10 @@ public readerdeletebutton:boolean=false;
   }
   public activeFlag:any='';
   EditAuthor(input:any){
-    const uploadData = new FormData();
-    uploadData.append('image', this.selectedFile, this.selectedFile.name);
     this.authorFlag=true;
     this.isEdit=true;
     this.authorId=input.id;
-    this.activeFlag=String(input.active);
-    this.AuthorModel.image=uploadData;
-    this.AuthorModel.active=this.activeFlag;
-    this.AuthorModel=input;
-    //this.http.put("https://localhost:44330/api/Books/bookupdate", this.authorId).subscribe(res=>this.Success(res),res=>console.log(res)); 
+    this.AuthorModel=input;   
   }
   DeleteAuthor(inputdata:any){
     this.authorId=inputdata.id;  
@@ -124,9 +119,6 @@ public readerdeletebutton:boolean=false;
     this._service.UnBlockGridService(this.authorId);
       this.GetAuthorByReader();    
   }
-   hasError(typeofValidator:string,controlname:string):Boolean{
-    
-    return this.AuthorModel.formAuthorGroup.controls[controlname].hasError(typeofValidator);
-  }
+   
 
 }
