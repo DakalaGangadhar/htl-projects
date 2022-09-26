@@ -42,3 +42,4 @@ D:\H_T_L\Webapi\Microservices\Microservices\Common\obj\Debug\Common.csproj.CoreC
 D:\H_T_L\Webapi\Microservices\Microservices\Common\obj\Debug\Common.csproj.CopyComplete
 D:\H_T_L\Webapi\Microservices\Microservices\Common\obj\Debug\Common.dll
 D:\H_T_L\Webapi\Microservices\Microservices\Common\obj\Debug\Common.pdb
+D:\H_T_L\Webapi\Microservices\Microservices\Common\obj\Debug\Common.csproj.AssemblyReference.cache

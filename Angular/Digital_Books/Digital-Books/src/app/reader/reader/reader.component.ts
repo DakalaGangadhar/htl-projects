@@ -40,7 +40,7 @@ public name:any='';
   ngOnInit(): void {
     this.name=this.jwt.decodeToken(this._auth.getToken()?.toString()).unique_name;
     console.log(this.jwt.decodeToken(this._auth.getToken()?.toString()));
-    console.log(this.name);
+    console.log(this.name);    
   }
   Add(){   
     
@@ -158,6 +158,12 @@ public name:any='';
     console.log("Get order data",response);
     this.OrderDetailsModels=response;
 
+  }
+  cancelOrder(_cancelorder:any){
+    debugger;
+    console.log("cancel order", _cancelorder);
+    this._service.cancelOrder( _cancelorder.orderid).subscribe(res=>this.GetOrderSuccess(res),res=>console.log(res)); 
+    this.myOrder();
   }
 
 }

@@ -11,6 +11,7 @@ export class ReaderServiceService {
   _BooksDelete="https://localhost:44330/api/UserData";
   _CreateBook="https://localhost:44330/api/Order/create-order";
   _GetOrderData="https://localhost:44330/api/Order/getorderdata";
+  _CancelOrder="https://localhost:44330/api/Order/order-cancel";
   constructor(private http:HttpClient) { }
 
 
@@ -54,6 +55,22 @@ export class ReaderServiceService {
     return this.http.get(this._GetOrderData+'?readerEmailid='+readermail)
       .pipe(map((oderdata: any) => {     
         return oderdata;
+      })
+      ,
+       catchError((error) => {    // handle error
+         
+          if (error.status == 404) {
+            //Handle Response code here
+          }
+          return throwError(error);
+        })
+      );
+  }
+  cancelOrder(orderid:any){
+
+    return this.http.put(this._CancelOrder+'?orderBookId='+orderid,'')
+      .pipe(map((canceloder: any) => {     
+        return canceloder;
       })
       ,
        catchError((error) => {    // handle error

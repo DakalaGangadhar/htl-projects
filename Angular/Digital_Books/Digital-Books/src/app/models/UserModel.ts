@@ -7,11 +7,12 @@ export class UserModel{
     public formUserGroup:FormGroup;
     constructor(){
     var _builder=new FormBuilder();
-    this.formUserGroup=_builder.group({});
-    this.formUserGroup.addControl("UsernameControl",new FormControl('',Validators.required));
-    this.formUserGroup.addControl("UserPasswordControl",new FormControl('',Validators.required));
-
-    var validationUsername=[];
+    this.formUserGroup=_builder.group({
+        UsernameControl:new FormControl('',Validators.compose([Validators.required,Validators.email])),
+        UserPasswordControl:new FormControl('',Validators.compose([Validators.required,Validators.pattern("[0-9]+")]))
+    });
+    
+    /*var validationUsername=[];
         validationUsername.push(Validators.required);
         validationUsername.push(Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"));
         this.formUserGroup.addControl("UsernameControl",new FormControl('',Validators.compose(validationUsername)));
@@ -19,6 +20,7 @@ export class UserModel{
         var validationcollection=[];
         validationcollection.push(Validators.required);
         validationcollection.push(Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$"));
-        this.formUserGroup.addControl("UserPasswordControl",new FormControl('',Validators.compose(validationcollection)));    
+        this.formUserGroup.addControl("UserPasswordControl",new FormControl('',Validators.compose(validationcollection))); 
+        */   
     }
 }

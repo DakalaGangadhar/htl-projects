@@ -1,0 +1,6 @@
+D:\H_T_L\Webapi\TicketingWebApi\Shared.Model\bin\Debug\Shared.Model.dll
+D:\H_T_L\Webapi\TicketingWebApi\Shared.Model\bin\Debug\Shared.Model.pdb
+D:\H_T_L\Webapi\TicketingWebApi\Shared.Model\obj\Debug\Shared.Model.csproj.AssemblyReference.cache
+D:\H_T_L\Webapi\TicketingWebApi\Shared.Model\obj\Debug\Shared.Model.csproj.CoreCompileInputs.cache
+D:\H_T_L\Webapi\TicketingWebApi\Shared.Model\obj\Debug\Shared.Model.dll
+D:\H_T_L\Webapi\TicketingWebApi\Shared.Model\obj\Debug\Shared.Model.pdb

@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Shared.Model
+{
+    public class Ticket
+    {
+        public string UserName { get; set; }
+        public string Boarding { get; set; }
+        public string Destination { get; set; }
+    }
+}

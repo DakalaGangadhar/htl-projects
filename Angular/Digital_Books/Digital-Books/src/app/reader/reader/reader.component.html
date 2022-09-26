@@ -127,19 +127,19 @@
                     <div class="row m-0 bg-light">
                       <div class="col-md-4 col-6 ps-30 pe-0 my-4">
                         <p class="text-muted">Author</p>
-                        <p class="h5">{{AuthorModelStore.author}}</p>
+                        <p class="">{{AuthorModelStore.author}}</p>
                       </div>
                       <div class="col-md-4 col-6  ps-30 my-4">
                         <p class="text-muted">Category</p>
-                        <p class="h5 m-0">{{AuthorModelStore.category}}</p>
+                        <p class="m-0">{{AuthorModelStore.category}}</p>
                       </div>
                       <div class="col-md-4 col-6 ps-30 my-4">
                         <p class="text-muted">Publisher</p>
-                        <p class="h5 m-0">{{AuthorModelStore.publisher}}</p>
+                        <p class="m-0">{{AuthorModelStore.publisher}}</p>
                       </div>
                       <div class="col-md-4 col-6 ps-30 my-4">
                         <p class="text-muted">Release Date</p>
-                        <p class="h5 m-0">{{AuthorModelStore.releasedate}}</p>
+                        <p class="m-0">{{AuthorModelStore.releasedate}}</p>
                       </div>
                     </div>
                   </div>
@@ -237,7 +237,7 @@
       {'colName':'price'},{'colName':'publisher'},{'colName':'releasedate'},{'colName':'active'},
       {'colName':'Image'},{'colName':'Contentdata'},{'colName':'authormail'},{'colName':'cardholdername'},
       {'colName':'cardnumber'},{'colName':'cardexpire'},{'colName':'cvv'},
-      {'colName':'cardtype'},{'colName':'category'}]" [order-data]="OrderDetailsModels">
+      {'colName':'cardtype'},{'colName':'category'}]" [order-data]="OrderDetailsModels" (order-cancel)="cancelOrder($event)">
 
       </app-my-order>
   </div>

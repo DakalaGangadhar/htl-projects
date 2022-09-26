@@ -1,0 +1,6 @@
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Common\bin\Debug\DigitalBook.Common.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Common\bin\Debug\DigitalBook.Common.pdb
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Common\obj\Debug\DigitalBook.Common.csproj.AssemblyReference.cache
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Common\obj\Debug\DigitalBook.Common.csproj.CoreCompileInputs.cache
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Common\obj\Debug\DigitalBook.Common.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Common\obj\Debug\DigitalBook.Common.pdb

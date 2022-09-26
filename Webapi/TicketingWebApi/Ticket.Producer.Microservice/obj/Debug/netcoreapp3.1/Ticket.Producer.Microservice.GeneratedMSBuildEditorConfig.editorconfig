@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = Ticket.Producer.Microservice
+build_property.ProjectDir = D:\H_T_L\Webapi\TicketingWebApi\Ticket.Producer.Microservice\

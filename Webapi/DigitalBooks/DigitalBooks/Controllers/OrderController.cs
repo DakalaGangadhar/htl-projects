@@ -31,6 +31,7 @@ namespace DigitalBooks.Controllers
                 orderbook.CardId =Convert.ToInt32( orderModelData?.CardId);
                 orderbook.BookIb = orderModelData?.BookIb;
                 orderbook.Userid = redermaildata?.Id;
+                orderbook.OrderActive = true;
                 db.Orderbooks.Add(orderbook);
                 db.SaveChanges();
                 var response = new { Status = "Success" };
@@ -74,8 +75,10 @@ namespace DigitalBooks.Controllers
                                        cardnumber=ob.CardNumber,
                                        cardexpire=ob.ExpireDate,
                                        cvv=ob.Cvv,
-                                       cardtype=ct.CardName,
-                                       category=c.CategoryName
+                                       orderid= ob.OrderId,
+                                       cardtype =ct.CardName,
+                                       category=c.CategoryName,
+                                       orderactive=ob.OrderActive
 
                                    }).ToList();
 
@@ -86,6 +89,24 @@ namespace DigitalBooks.Controllers
                 return Ok(ex);
             }
 
+        }
+        [HttpPut]
+        [Route("order-cancel")]
+        public IActionResult cancelOrder([FromQuery]int orderBookId)
+        {
+            try
+            {
+                var cancel = db.Orderbooks.Where(x => x.OrderId == orderBookId).FirstOrDefault();                 
+                cancel.OrderActive = false;
+                db.Orderbooks.Update(cancel);
+                db.SaveChanges();
+                var response = new { Status = "Success" };
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return Ok(ex);
+            }
         }
     }
 }

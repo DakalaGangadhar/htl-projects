@@ -3,21 +3,27 @@ import { NgForm, FormBuilder, FormControl, FormGroup, Validators } from "@angula
 export class RegisterModel{
     Username:string='';
     Password:string='';
-    public formRegisterGroup:FormGroup;
+   public formRegisterGroup:FormGroup;
     constructor(){
     var _builder=new FormBuilder();
-    this.formRegisterGroup=_builder.group({});
-    this.formRegisterGroup.addControl("UsernameControl",new FormControl('',Validators.required));
+    this.formRegisterGroup=_builder.group({
+        UsernameControl:new FormControl('',Validators.compose([Validators.required,Validators.email])),
+        UserPasswordControl:new FormControl('',Validators.compose([Validators.required,Validators.pattern("[0-9]+")]))
+    });
+   /*.formRegisterGroup.addControl("UsernameControl",new FormControl('',Validators.compose([Validators.required,Validators.email])));
     this.formRegisterGroup.addControl("UserPasswordControl",new FormControl('',Validators.required));
 
     var validationUsername=[];
         validationUsername.push(Validators.required);
-        validationUsername.push(Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"));
+        validationUsername.push(Validators.email);
         this.formRegisterGroup.addControl("UsernameControl",new FormControl('',Validators.compose(validationUsername)));
 
-        var validationcollection=[];
-        validationcollection.push(Validators.required);
-        validationcollection.push(Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$"));
-        this.formRegisterGroup.addControl("UserPasswordControl",new FormControl('',Validators.compose(validationcollection)));    
+        var validationPassword=[];
+        validationPassword.push(Validators.required);
+        validationPassword.push(Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$"));
+        this.formRegisterGroup.addControl("UserPasswordControl",new FormControl('',Validators.compose(validationPassword)));  */
+    }
+    get user(){
+       return this.formRegisterGroup.controls;
     }
 }

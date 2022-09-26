@@ -9,23 +9,20 @@
         <div class="card bg-light">  
           <h4 class="card-title mt-3 text-center">Create Account</h4>
             <article class="card-body mx-auto" style="max-width: 400px;">
-            <div class="form-group input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-              </div>
-              <input [(ngModel)]="RegisterModel.Username" formControlName="UsernameControl" class="form-control" placeholder="Enter Email" type="email">
+            <div class="form-group">             
+              <input [(ngModel)]="RegisterModel.Username" formControlName="UsernameControl" class="form-control" placeholder="Enter Email" type="email">              
+              <span class="validspan" *ngIf="!RegisterModel.formRegisterGroup.controls['UsernameControl'].valid && 
+              RegisterModel.formRegisterGroup.controls['UsernameControl']?.touched"> Please enter a valid email</span>
             </div>  <!-- form-group end.// -->
-            <div class="form-group input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-              </div>
+            <div class="form-group">             
               <input class="form-control" [(ngModel)]="RegisterModel.Password" formControlName="UserPasswordControl" placeholder="Create password" type="password">
+              <span class="validspan" *ngIf="!RegisterModel.formRegisterGroup.controls['UserPasswordControl'].valid && 
+              RegisterModel.formRegisterGroup.controls['UserPasswordControl']?.touched"> Please enter a strong password</span>
             </div> <!-- form-group// -->
-            <div class="form-group input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-              </div>
-              <input class="form-control" [(ngModel)]="RegisterModel.Password" formControlName="UserPasswordControl" placeholder="Repeat password" type="password">
+            <div class="form-group">
+            <input class="form-control" [(ngModel)]="RegisterModel.Password" formControlName="UserPasswordControl" placeholder="Repeat password" type="password">
+            <span class="validspan" *ngIf="!RegisterModel.formRegisterGroup.controls['UserPasswordControl'].valid && 
+              RegisterModel.formRegisterGroup.controls['UserPasswordControl']?.touched"> Please enter a strong password</span>
             </div> <!-- form-group// -->
             <div class="form-group">
               <button type="submit" [disabled]="!(RegisterModel.formRegisterGroup.valid)" class="btn btn-primary btn-block" (click)="registerUser()"> Create Account </button>
@@ -37,8 +34,5 @@
   
       </div>
     </div>
-  </form>
-    
-    
-  
+  </form>  
   </div>
