@@ -14,5 +14,9 @@
     <ProjectReference Include="..\Shared.Model\Shared.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 
 </Project>

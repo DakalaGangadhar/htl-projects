@@ -21,6 +21,7 @@ namespace DigitalBook.Getway
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.ConfigureAppConfiguration(x => x.AddJsonFile("Ocelot.json"));
                 });
     }
 }

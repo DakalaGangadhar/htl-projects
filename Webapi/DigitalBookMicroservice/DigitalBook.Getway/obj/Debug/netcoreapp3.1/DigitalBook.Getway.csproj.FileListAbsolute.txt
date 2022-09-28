@@ -8,7 +8,6 @@ D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\DigitalBook.Getway.pdb
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\DigitalBook.Getway.Views.dll
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\DigitalBook.Getway.Views.pdb
-D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\obj\Debug\netcoreapp3.1\DigitalBook.Getway.csproj.AssemblyReference.cache
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\obj\Debug\netcoreapp3.1\DigitalBook.Getway.GeneratedMSBuildEditorConfig.editorconfig
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\obj\Debug\netcoreapp3.1\DigitalBook.Getway.AssemblyInfoInputs.cache
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\obj\Debug\netcoreapp3.1\DigitalBook.Getway.AssemblyInfo.cs
@@ -36,3 +35,17 @@ D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\obj\Debug\netcoreapp3
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\obj\Debug\netcoreapp3.1\DigitalBook.Getway.pdb
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\obj\Debug\netcoreapp3.1\DigitalBook.Getway.genruntimeconfig.cache
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\obj\Debug\netcoreapp3.1\DigitalBook.Getway.csproj.CopyComplete
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\Consul.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DiagnosticAdapter.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\Ocelot.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\Ocelot.Provider.Consul.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard1.3\System.Net.Http.WinHttpHandler.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Getway\obj\Debug\netcoreapp3.1\DigitalBook.Getway.MvcApplicationPartsAssemblyInfo.cs

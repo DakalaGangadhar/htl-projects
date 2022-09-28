@@ -48,9 +48,4 @@ export class RegisterComponent implements OnInit {
     }
   
   }
-  hasError(typeofValidator:string,controlname:string):Boolean{
-    
-    return this.RegisterModel.formRegisterGroup.controls[controlname].hasError(typeofValidator);
-  }
-
 }

@@ -57,16 +57,26 @@ namespace DigitalBooks.Controllers
         //    var response = new { Status = "Success" };
         //    return Ok(response);
         //}
-        [HttpGet]
+        [HttpPost]
         [Route("GetAuthorByReaderSearch")]
-        public dynamic GetAuthorByReaderSearch([FromQuery] int category, string author, string publisher, int price)
+        public dynamic GetAuthorByReaderSearch([FromBody] SearchDataModel searchDataModel)
         {
             try
             {
+                int categoryid = 0;
+                if (searchDataModel.category=="" || searchDataModel.category == "Select Category")
+                {
+                    searchDataModel.category = "0";
+                }
+                if (searchDataModel.price==null)
+                {
+                    searchDataModel.price = 0;
+                }
+                categoryid = Convert.ToInt32(searchDataModel?.category);
                 dynamic getdata = (from o in db.Books
                                    join i in db.Bookcategories
                                    on o.Categoryid equals i.CategoryId
-                                   where (o.Active == true && (o.Categoryid == category || o.Author == author || o.Publisher == publisher || o.Price == price))
+                                   where (o.Active == true && (o.Categoryid == categoryid || o.Author == searchDataModel.author || o.Publisher == searchDataModel.publisher || o.Price == searchDataModel.price))
                                    select new
                                    {
                                        id = o.Id,

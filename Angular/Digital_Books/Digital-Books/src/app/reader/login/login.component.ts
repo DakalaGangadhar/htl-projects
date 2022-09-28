@@ -54,8 +54,7 @@ export class LoginComponent implements OnInit {
     if(this.domainArray[3]=="reader"){
      
 
-      this._serviceLogin.loginReader(_userData).subscribe(res=>{
-        alert('Login Successfully');
+      this._serviceLogin.loginReader(_userData).subscribe(res=>{        
         localStorage.setItem('token',res.token);
         localStorage.setItem('readeremailid',this.UserModel.Username);
         this._router.navigate(['reader/add']);
@@ -104,10 +103,7 @@ export class LoginComponent implements OnInit {
     this.readerGridFlag=true;
    
   }
-  hasError(typeofValidator:string,controlname:string):Boolean{
-    
-    return this.UserModel.formUserGroup.controls[controlname].hasError(typeofValidator);
-  }
+ 
   ReaderBuyABook(bookbuy:any){
     this.AuthorModelStore=bookbuy;
     console.log("Data getting",this.name);

@@ -11,7 +11,7 @@ export class MasterComponent implements OnInit {
   constructor(private _auth:LoginServiceService) { }
   ngOnInit(): void {
   }
-  LoggedIn(Input:boolean):boolean{
+  LoggedIn(Input:boolean):boolean{    
     if(Input){
       return this._auth.logginIn();
     }
@@ -20,6 +20,7 @@ export class MasterComponent implements OnInit {
     }
   }
   Logout(){
+    debugger;
     this._auth.logoutUser();
     
   }

@@ -66,3 +66,7 @@ D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Reader\obj\Debug\netcoreapp3
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Reader\obj\Debug\netcoreapp3.1\DigitalBook.Reader.dll
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Reader\obj\Debug\netcoreapp3.1\DigitalBook.Reader.pdb
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Reader\obj\Debug\netcoreapp3.1\DigitalBook.Reader.genruntimeconfig.cache
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Reader\bin\Debug\netcoreapp3.1\DigitalBook.Common.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Reader\bin\Debug\netcoreapp3.1\Consul.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Reader\bin\Debug\netcoreapp3.1\DigitalBook.Common.pdb
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Reader\obj\Debug\netcoreapp3.1\DigitalBook.Reader.csproj.CopyComplete

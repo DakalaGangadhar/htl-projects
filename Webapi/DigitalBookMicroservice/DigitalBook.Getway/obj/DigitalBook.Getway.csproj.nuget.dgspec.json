@@ -45,6 +45,16 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Ocelot": {
+              "target": "Package",
+              "version": "[16.0.1, )"
+            },
+            "Ocelot.Provider.Consul": {
+              "target": "Package",
+              "version": "[16.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

@@ -38,9 +38,9 @@ export class ReaderComponent implements OnInit {
   constructor(private http:HttpClient,private _router:Router,private _service:ReaderServiceService,private jwt: JwtHelperService, private _auth: LoginServiceService) { }
 public name:any='';
   ngOnInit(): void {
-    this.name=this.jwt.decodeToken(this._auth.getToken()?.toString()).unique_name;
+    this.name=this.jwt.decodeToken(this._auth.getToken()?.toString())?.unique_name;
     console.log(this.jwt.decodeToken(this._auth.getToken()?.toString()));
-    console.log(this.name);    
+    console.log(this.name);   
   }
   Add(){   
     
@@ -68,7 +68,7 @@ public name:any='';
     this.isEdit=true;
     this.id_data=input.id;
     this.ReaderModel=input;
-    this.http.put(this.url, this.id_data).subscribe(res=>this.Success(res),res=>console.log(res)); 
+   // this.http.put(this.url, this.id_data).subscribe(res=>this.Success(res),res=>console.log(res)); 
   }
   DeleteAuthor(inputdata:any){
     this.id_data=inputdata.id;  
@@ -162,7 +162,7 @@ public name:any='';
   cancelOrder(_cancelorder:any){
     debugger;
     console.log("cancel order", _cancelorder);
-    this._service.cancelOrder( _cancelorder.orderid).subscribe(res=>this.GetOrderSuccess(res),res=>console.log(res)); 
+    this._service.cancelOrder( _cancelorder.orderid).subscribe(res=>this.myOrder(),res=>console.log(res)); 
     this.myOrder();
   }
 

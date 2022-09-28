@@ -67,3 +67,6 @@ D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Author\obj\Debug\netcoreapp3
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Author\obj\Debug\netcoreapp3.1\DigitalBook.Author.dll
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Author\obj\Debug\netcoreapp3.1\DigitalBook.Author.pdb
 D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Author\obj\Debug\netcoreapp3.1\DigitalBook.Author.genruntimeconfig.cache
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Author\bin\Debug\netcoreapp3.1\DigitalBook.Common.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Author\bin\Debug\netcoreapp3.1\Consul.dll
+D:\H_T_L\Webapi\DigitalBookMicroservice\DigitalBook.Author\bin\Debug\netcoreapp3.1\DigitalBook.Common.pdb

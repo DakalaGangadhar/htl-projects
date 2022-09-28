@@ -44,3 +44,4 @@ D:\H_T_L\Webapi\TicketingWebApi\Ticket.Producer.Microservice\obj\Debug\netcoreap
 D:\H_T_L\Webapi\TicketingWebApi\Ticket.Producer.Microservice\obj\Debug\netcoreapp3.1\Ticket.Producer.Microservice.dll
 D:\H_T_L\Webapi\TicketingWebApi\Ticket.Producer.Microservice\obj\Debug\netcoreapp3.1\Ticket.Producer.Microservice.pdb
 D:\H_T_L\Webapi\TicketingWebApi\Ticket.Producer.Microservice\obj\Debug\netcoreapp3.1\Ticket.Producer.Microservice.genruntimeconfig.cache
+D:\H_T_L\Webapi\TicketingWebApi\Ticket.Producer.Microservice\obj\Debug\netcoreapp3.1\Ticket.Producer.Microservice.csproj.CopyComplete

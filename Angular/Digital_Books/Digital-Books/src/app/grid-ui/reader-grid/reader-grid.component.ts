@@ -22,9 +22,10 @@ export class ReaderGridComponent implements OnInit {
   public displayNone:any="";
   public imagePath:any
   public name:any='';
+  
 
   ngOnInit(): void {
-    this.name=this.jwt.decodeToken(this._auth.getToken()?.toString()).unique_name;
+    this.name=this.jwt.decodeToken(this._auth.getToken()?.toString())?.unique_name;
     console.log(this.jwt.decodeToken(this._auth.getToken()?.toString()));
     console.log("Data getting",this.name);
 

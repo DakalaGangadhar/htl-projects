@@ -7,7 +7,7 @@ import { catchError, map, throwError } from 'rxjs';
 })
 export class ReaderServiceService {
   public _token:any='';
-  _GetAuthorByReaderSearch="https://localhost:44330/api/UserData/GetAuthorByReaderSearch/";
+  _GetAuthorByReaderSearch="https://localhost:44330/api/UserData/GetAuthorByReaderSearch";
   _BooksDelete="https://localhost:44330/api/UserData";
   _CreateBook="https://localhost:44330/api/Order/create-order";
   _GetOrderData="https://localhost:44330/api/Order/getorderdata";
@@ -22,8 +22,8 @@ export class ReaderServiceService {
     _readerModel.price;
    
     
-    return this.http.get<any>(this._GetAuthorByReaderSearch+'?category='+ _readerModel.category +'&author='+ _readerModel.author+'&publisher='+_readerModel.publisher+'&price='+ _readerModel.price);
-   // return this.http.get<any>(this._GetAuthorByReaderSearch+'?title='+ _readerModel.title);
+    //return this.http.get<any>(this._GetAuthorByReaderSearch+'?category='+ _readerModel.category +'&author='+ _readerModel.author+'&publisher='+_readerModel.publisher+'&price='+ _readerModel.price);
+   return this.http.post<any>(this._GetAuthorByReaderSearch, _readerModel);
   }
   DeleteBooksData(id_data:any){
     return this.http.delete(this._BooksDelete+'?authorid='+id_data);
