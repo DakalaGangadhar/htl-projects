@@ -27,12 +27,11 @@ export class RegisterComponent implements OnInit {
     if(this.domain[3]=="reader"){
       this._serviceRegister.registerReader(_registerData).subscribe(res=>{
         this._router.navigate(['reader/login']);
-        alert('Reader Register Successfully');
       },res=>console.log(res));
 
     }else{
       this._serviceRegister.registerAuthor(_registerData).subscribe(res=>{
-        alert('Author Register Successfully');
+        //alert('Author Register Successfully');
         this._router.navigate(['author/login']);
       },res=>console.log(res));
 
