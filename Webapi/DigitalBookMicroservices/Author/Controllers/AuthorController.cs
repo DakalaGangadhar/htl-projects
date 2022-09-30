@@ -1,4 +1,5 @@
 ﻿using Author.Models;
+using Author.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,73 +18,52 @@ namespace Author.Controllers
     [ApiController]    
     public class AuthorController : ControllerBase
     {
-        digitalbooksDBContext db;
-        private IConfiguration _config;
-        public AuthorController(IConfiguration config, digitalbooksDBContext _db)
+        IAuthorService authorService;
+        public AuthorController(IAuthorService _authorService)
         {
-            _config = config;
-            db = _db;
+            authorService = _authorService;
         }
         [HttpPost]
         [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
         [Route("author-login")]
-        public IActionResult Login(Authorlogin authorlogin)
+        public async Task<IActionResult> Login(Authorlogin authorlogin)
         {
-            IActionResult response = Unauthorized();
-            var userdata = AuthenticateUser(authorlogin, false);
-            if (authorlogin != null)
+            try
             {
-                var tokenString = GenerateToken(userdata);
-                response = Ok(new { token = tokenString });
-            }
-            return response;
-        }
-        private Authorlogin AuthenticateUser(Authorlogin authorlogin, bool IsRegister)
-        {
-            if (IsRegister)
-            {
-                db.Authorlogins.Add(authorlogin);
-                return authorlogin;
-            }
-            else
-            {
-                if (db.Authorlogins.Any(x => x.Username == authorlogin.Username && x.Password == authorlogin.Password))
+                IActionResult response = Unauthorized();
+                var userdata =await authorService.AuthorLogin(authorlogin, false);
+                if (authorlogin != null)
                 {
-                    return db.Authorlogins.Where(x => x.Username == authorlogin.Username && x.Password == authorlogin.Password).FirstOrDefault();
+                    response = Ok(new { token = userdata });
                 }
-                else
-                {
-                    return null;
-                }
+                return response;
             }
-
+            catch (Exception ex)
+            {
+               return Ok(ex);
+            }
+            
         }
-        private string GenerateToken(Authorlogin authorlogin)
-        {
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["jwt:Key"]));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(_config["jwt:Issuer"],
-                _config["jwt:Audience"],
-                null,
-                expires: DateTime.Now.AddMinutes(120),
-                signingCredentials: credentials);
-            return new JwtSecurityTokenHandler().WriteToken(token);
-        }
+       
         [HttpPost]
         [Route("author-register")]
-        public IActionResult Register([FromBody] Authorlogin authorlogin)
+        public async Task<IActionResult> Register([FromBody] Authorlogin authorlogin)
         {
-            IActionResult response = Unauthorized();
-            var userdata = AuthenticateUser(authorlogin, true);
-            if (authorlogin != null)
+            try
             {
-                db.Add(authorlogin);
-                db.SaveChanges();
-                var tokenString = GenerateToken(userdata);
-                response = Ok(new { token = tokenString });
+                IActionResult response = Unauthorized();
+                var userdata =await authorService.AuthorRegister(authorlogin, true);
+                if (authorlogin != null)
+                {
+                    response = Ok(new { token = userdata });
+                }
+                return response;
             }
-            return response;
+            catch (Exception ex)
+            {
+                return Ok(ex);
+            }
+            
         }
     }
 }

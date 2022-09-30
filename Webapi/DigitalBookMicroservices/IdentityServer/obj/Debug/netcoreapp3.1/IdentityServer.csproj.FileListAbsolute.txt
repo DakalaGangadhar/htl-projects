@@ -35,7 +35,7 @@ D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\obj\Debug\netcoreapp3.1\
 D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\obj\Debug\netcoreapp3.1\staticwebassets\IdentityServer.StaticWebAssets.xml
 D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\obj\Debug\netcoreapp3.1\scopedcss\bundle\IdentityServer.styles.css
 D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.RazorTargetAssemblyInfo.cache
-D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.csproj.CopyComplete
 D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.pdb
 D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.genruntimeconfig.cache
+D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.csproj.CopyComplete

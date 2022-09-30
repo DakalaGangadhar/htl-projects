@@ -1,20 +1,25 @@
+using Author.Consumers;
 using Author.Models;
 using Author.Services;
 using CommonData;
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,8 +78,26 @@ namespace Author
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["jwt:Key"]))
                     };
                 });
+            services.AddMassTransit(x => {
+                x.AddConsumer<AuthorConsumer>();
+                x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(config =>
+                {
+                    config.Host(new Uri("rabbitmq://localhost/"), h =>
+                    {
+                        h.Username("guest");
+                        h.Password("guest");
+                    });
+
+                    config.ReceiveEndpoint("fromReaderQueue", ep => {
+                        ep.ConfigureConsumer<AuthorConsumer>(provider);
+                    });
+                }));
+
+            });
+            services.AddMassTransitHostedService();
             services.AddControllers();
             services.AddScoped<IAuthorService, AuthorService>();
+            services.AddScoped<IBookService, BookService>();
             services.AddDbContext<digitalbooksDBContext>(x => x.UseSqlServer(Configuration.GetConnectionString("AuthorConnection")));
             services.AddConsulConfig(Configuration);
         }
@@ -96,7 +119,12 @@ namespace Author
             app.UseSwaggerUI(c => {
                 c.SwaggerEndpoint("/swagger/v2/swagger.json", "Author app v2");
             });
-
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Images")),
+                RequestPath = new PathString("/Images")
+            });
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

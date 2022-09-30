@@ -42,6 +42,7 @@ namespace DigitalBooks.Controllers
             if (IsRegister)
             {
                 db.Authorlogins.Add(authorlogin);
+                db.SaveChanges();
                 return authorlogin;
             }
             else
@@ -77,8 +78,8 @@ namespace DigitalBooks.Controllers
             var userdata = AuthenticateUser(authorlogin, true);
             if (authorlogin != null)
             {
-                db.Add(authorlogin);
-                db.SaveChanges();
+               // db.Add(authorlogin);
+                //db.SaveChanges();
                 var tokenString = GenerateToken(userdata);
                 response = Ok(new { token = tokenString });
             }

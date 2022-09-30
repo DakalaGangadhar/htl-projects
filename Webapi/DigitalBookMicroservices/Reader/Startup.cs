@@ -1,5 +1,6 @@
 
 using CommonData;
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -75,6 +76,21 @@ namespace Reader
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["jwt:Key"]))
                     };
                 });
+            services.AddMassTransit(x => {
+                //x.AddConsumer<>
+                x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(config =>
+                {
+                    config.Host(new Uri("rabbitmq://localhost/"), h =>
+                    {
+                        h.Username("guest");
+                        h.Password("guest");
+                    });
+                    config.ReceiveEndpoint("fromReaderQueue", ep => {
+
+                    });
+                }));
+            });
+            services.AddMassTransitHostedService();            
             services.AddConsulConfig(Configuration);
             services.AddScoped<IUserDataService, UserDataService>();
             services.AddDbContext<digitalbooksDBContext>(x => x.UseSqlServer(Configuration.GetConnectionString("ReaderConnection")));
