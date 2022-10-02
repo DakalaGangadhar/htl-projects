@@ -1,5 +1,4 @@
-﻿using Reader.Models;
-using Reader.Models.DataModels;
+﻿using CommonData.Models.ModelData;
 using System;
 using System.Collections.Generic;
 using System.Linq;

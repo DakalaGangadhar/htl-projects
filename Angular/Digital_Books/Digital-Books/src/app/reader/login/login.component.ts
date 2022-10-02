@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
    public id_data:string='';
   public isEdit=false;
   public readerFlag:boolean=true;
-  public url = "https://localhost:44330/api/UserData";
 
   public readereditbutton:boolean=true;
   public readerdeletebutton:boolean=true;
@@ -91,7 +90,6 @@ export class LoginComponent implements OnInit {
     this.isEdit=true;
     this.id_data=input.id;
     this.ReaderReaderModel=input;
-    this.http.put(this.url, this.id_data).subscribe(res=>this.Success(res),res=>console.log(res)); 
   }
   DeleteAuthor(inputdata:any){
     this.id_data=inputdata.id;  

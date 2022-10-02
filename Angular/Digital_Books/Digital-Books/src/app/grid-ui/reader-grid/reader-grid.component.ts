@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ApiListService } from 'src/app/api-list.service';
 import { AuthorModel } from 'src/app/models/AuthorModel';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 
@@ -11,10 +12,10 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
 })
 export class ReaderGridComponent implements OnInit {
 
-  constructor(private jwt: JwtHelperService, private _auth: LoginServiceService,private _router:Router) { }
+  constructor(private jwt: JwtHelperService, private _auth: LoginServiceService,private _router:Router, private _apilist:ApiListService) { }
   
   AuthorModelStore: AuthorModel = new AuthorModel();
-  public imageURL:any="https://localhost:44330/";
+  public imageURL:any="";
   gridColumns: Array<any> =new Array<any>();
   gridData: Array<any> =new Array<any>();
   @Input("readerdeletebutton") public readerdeletebutton:any;
@@ -25,6 +26,7 @@ export class ReaderGridComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.imageURL=this._apilist.imageURL;
     this.name=this.jwt.decodeToken(this._auth.getToken()?.toString())?.unique_name;
     console.log(this.jwt.decodeToken(this._auth.getToken()?.toString()));
     console.log("Data getting",this.name);

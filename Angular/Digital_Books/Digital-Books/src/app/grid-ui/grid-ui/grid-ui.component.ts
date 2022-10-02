@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ApiListService } from 'src/app/api-list.service';
 
 @Component({
   selector: 'app-grid-ui',
@@ -8,17 +9,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class GridUiComponent implements OnInit {
 
-  constructor(private http:HttpClient) { }
-  public imageURL:any="https://localhost:44330/";
+  constructor(private http:HttpClient, private _apilist:ApiListService) { }
   gridColumns: Array<any> =new Array<any>();
   gridData: Array<any> =new Array<any>();
   @Input("readerdeletebutton") public readerdeletebutton:any;
   @Input("readereditbutton") public readereditbutton:any;
   public displayNone:any="";
   public imagePath:any
+  public imageURL:any="";
   
 
   ngOnInit(): void {
+   this.imageURL= this._apilist.imageURL;
     if(this.readereditbutton){
       this.displayNone="disabled-link"
     }else{

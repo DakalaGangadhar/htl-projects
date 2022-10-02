@@ -1,5 +1,6 @@
 
 using CommonData;
+using CommonData.Models;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -13,7 +14,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Reader.Models;
 using Reader.Services;
 using System;
 using System.Collections.Generic;
@@ -93,6 +93,8 @@ namespace Reader
             services.AddMassTransitHostedService();            
             services.AddConsulConfig(Configuration);
             services.AddScoped<IUserDataService, UserDataService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IUserLoginService, UserLoginService>();
             services.AddDbContext<digitalbooksDBContext>(x => x.UseSqlServer(Configuration.GetConnectionString("ReaderConnection")));
             //services.AddSwaggerGen();
         }

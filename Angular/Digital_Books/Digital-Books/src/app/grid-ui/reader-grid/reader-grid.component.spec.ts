@@ -2,6 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router, RouterModule } from '@angular/router';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { ApiListService } from 'src/app/api-list.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 
 import { ReaderGridComponent } from './reader-grid.component';
@@ -14,6 +15,7 @@ describe('ReaderGridComponent', () => {
     let router:Router;
     let serviceLogin:LoginServiceService;
     let jwthelperService:JwtHelperService;
+    let apilistservice:ApiListService;
     await TestBed.configureTestingModule({
       declarations: [ ReaderGridComponent ],
       imports:[HttpClientTestingModule, RouterModule],
@@ -23,7 +25,7 @@ describe('ReaderGridComponent', () => {
     router=TestBed.inject(Router);
     serviceLogin=TestBed.inject(LoginServiceService);
     jwthelperService=TestBed.inject(JwtHelperService);
-
+    apilistservice=TestBed.inject(ApiListService);
 
     fixture = TestBed.createComponent(ReaderGridComponent);
     component = fixture.componentInstance;

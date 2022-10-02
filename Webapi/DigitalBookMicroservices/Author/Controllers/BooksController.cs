@@ -1,5 +1,5 @@
-﻿using Author.Models;
-using Author.Services;
+﻿using Author.Services;
+using CommonData.Models.ModelData;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;

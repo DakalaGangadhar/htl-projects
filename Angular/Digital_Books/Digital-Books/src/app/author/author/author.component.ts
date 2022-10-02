@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiListService } from 'src/app/api-list.service';
 import { AuthorModel } from 'src/app/models/AuthorModel';
 import { AuthorServiceService } from 'src/app/services/author-service.service';
 
@@ -11,15 +12,15 @@ import { AuthorServiceService } from 'src/app/services/author-service.service';
 })
 export class AuthorComponent implements OnInit {
 
-  constructor(private http:HttpClient,private _router:Router,private _service:AuthorServiceService) { }
+  constructor(private http:HttpClient,private _router:Router,private _service:AuthorServiceService, private _apilist:ApiListService) { }
 public isEdit:boolean=false;
 public authorId:any;
-public url:any="https://localhost:44330/api/Author/books";
-public updateurl:any="https://localhost:44330/api/Books/bookupdate";
+
 
 public readereditbutton:boolean=false;
 public readerdeletebutton:boolean=false;
-  ngOnInit(): void {
+
+  ngOnInit(): void {   
     this.GetAuthorByReader();
   }
   AuthorModel: AuthorModel = new AuthorModel();
@@ -63,9 +64,9 @@ public readerdeletebutton:boolean=false;
     if(this.isEdit){
       this.activeBool= String(this.AuthorModel.active);
       this.AuthorModel.active=this.activeBool;
-      this.http.put(this.updateurl,uploadData).subscribe(res=>this.PostSuccess(res),res=>console.log(res))
+      this.http.put(this._apilist.bookupdateUrl,uploadData).subscribe(res=>this.PostSuccess(res),res=>console.log(res))
     }else{
-      this.http.post("https://localhost:44330/api/Books/create-books",uploadData).subscribe(res=>this.PostSuccess(res),res=>console.log(res));
+      this.http.post(this._apilist.createbooksUrl,uploadData).subscribe(res=>this.PostSuccess(res),res=>console.log(res));
     }
     
              

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ApiListService } from 'src/app/api-list.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
@@ -10,13 +11,13 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
 export class MyOrderComponent implements OnInit {
   orderColumns: Array<any> =new Array<any>();
   orderData: Array<any> =new Array<any>();
-  public imageURL:string='https://localhost:44330/';
+  public imageURL:string='';
   public name:any='';
   public readername:any='';
-  constructor(private jwt: JwtHelperService, private _auth: LoginServiceService) { }
+  constructor(private jwt: JwtHelperService, private _auth: LoginServiceService, private _apilist:ApiListService) { }
 
   ngOnInit(): void {
-   
+   this.imageURL=this._apilist.imageURL;
 
   }
   @Input("order-columns")

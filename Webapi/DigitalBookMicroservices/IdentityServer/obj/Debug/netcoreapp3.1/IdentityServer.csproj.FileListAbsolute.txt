@@ -25,7 +25,6 @@ D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\bin\Debug\netcoreapp3.1\
 D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.csproj.AssemblyReference.cache
 D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.GeneratedMSBuildEditorConfig.editorconfig
 D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.AssemblyInfoInputs.cache
 D:\H_T_L\Webapi\DigitalBookMicroservices\IdentityServer\obj\Debug\netcoreapp3.1\IdentityServer.AssemblyInfo.cs

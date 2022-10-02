@@ -1,7 +1,7 @@
 using Author.Consumers;
-using Author.Models;
 using Author.Services;
 using CommonData;
+using CommonData.Models;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ApiListService } from 'src/app/api-list.service';
 import { AuthorModel } from 'src/app/models/AuthorModel';
 import { OrderDetailsModel } from 'src/app/models/OrderDetailsModel';
 import { OrderModel } from 'src/app/models/OrderModel';
@@ -21,8 +22,8 @@ export class ReaderComponent implements OnInit {
   AuthorModelStore: AuthorModel = new AuthorModel();
   OrderModel: OrderModel = new OrderModel();
   OrderDetailsModels:Array<OrderDetailsModel>=new Array<OrderDetailsModel>();
-  public url = "https://localhost:44330/api/UserData";
-  public imageBaseUrl:any="https://localhost:44330/";
+ 
+
   public id_data:string='';
   public isEdit=false;
   public readerSearchdiv:boolean=true;
@@ -34,15 +35,17 @@ export class ReaderComponent implements OnInit {
   public bookBuy:boolean=false;
   public viewBookdata:boolean=false;
   public myOrderdiv:boolean=false;
+  public imageBaseUrl:any='';
 
-  constructor(private http:HttpClient,private _router:Router,private _service:ReaderServiceService,private jwt: JwtHelperService, private _auth: LoginServiceService) { }
+  constructor(private http:HttpClient,private _router:Router,private _service:ReaderServiceService,private jwt: JwtHelperService, private _auth: LoginServiceService, private _apilist:ApiListService) { }
 public name:any='';
   ngOnInit(): void {
+    this.imageBaseUrl=this._apilist.imageURL;
     this.name=this.jwt.decodeToken(this._auth.getToken()?.toString())?.unique_name;
     console.log(this.jwt.decodeToken(this._auth.getToken()?.toString()));
     console.log(this.name);   
   }
-  Add(){   
+  /*Add(){   
     
     if(this.isEdit){
       this.http.put(this.url,this.ReaderModel).subscribe(res=>this.PostSuccess(res),res=>console.log(res))
@@ -53,7 +56,7 @@ public name:any='';
        
         this.ReaderModel = new ReaderModel();        
       
-  }
+  }*/
   
   SearchAuthorByReader(){   
    this._service.GetAuthorByReaderSearch(this.ReaderModel).subscribe(res=>this.Success(res),res=>console.log(res)); 

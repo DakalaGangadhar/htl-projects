@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CommonData.Models.ModelData;
+using MassTransit;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Reader.Models;
 using Reader.Services;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,11 @@ namespace Reader.Controllers
     public class UserDataController : ControllerBase
     {
         IUserDataService userdataService;
-        public UserDataController(IUserDataService _userdataService)
+        private readonly IBus bus;
+        public UserDataController(IUserDataService _userdataService, IBus _bus)
         {
             userdataService = _userdataService;
+            bus = _bus;
         }
         [HttpPost]
         [Route("GetAuthorByReaderSearch")]
@@ -24,7 +27,15 @@ namespace Reader.Controllers
         {
             try
             {
-                dynamic data = await userdataService.GetAuthorByReaderSearch(searchDataModel);
+                dynamic data=null;
+                if (searchDataModel!=null)
+                {
+                    data = await userdataService.GetAuthorByReaderSearch(searchDataModel);
+                    Uri uri = new Uri("rabbitmq:localhost/fromReaderQueue");
+                    var endpoint = await bus.GetSendEndpoint(uri);
+                    await endpoint.Send(searchDataModel);
+                }
+               
                 if (data == null)
                 {
                     return NotFound();

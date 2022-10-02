@@ -1,18 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, throwError } from 'rxjs';
+import { ApiListService } from '../api-list.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReaderServiceService {
   public _token:any='';
-  _GetAuthorByReaderSearch="https://localhost:44330/api/UserData/GetAuthorByReaderSearch";
-  _BooksDelete="https://localhost:44330/api/UserData";
-  _CreateBook="https://localhost:44330/api/Order/create-order";
-  _GetOrderData="https://localhost:44330/api/Order/getorderdata";
-  _CancelOrder="https://localhost:44330/api/Order/order-cancel";
-  constructor(private http:HttpClient) { }
+
+  constructor(private http:HttpClient, private _apilist:ApiListService) { }
 
 
   GetAuthorByReaderSearch(_readerModel:any){
@@ -23,10 +20,10 @@ export class ReaderServiceService {
    
     
     //return this.http.get<any>(this._GetAuthorByReaderSearch+'?category='+ _readerModel.category +'&author='+ _readerModel.author+'&publisher='+_readerModel.publisher+'&price='+ _readerModel.price);
-   return this.http.post<any>(this._GetAuthorByReaderSearch, _readerModel);
+   return this.http.post<any>(this._apilist._GetAuthorByReaderSearch, _readerModel);
   }
   DeleteBooksData(id_data:any){
-    return this.http.delete(this._BooksDelete+'?authorid='+id_data);
+    return this.http.delete(this._apilist._BooksDelete+'?authorid='+id_data);
   }
   getToken(){
     return localStorage.getItem('token');
@@ -36,7 +33,7 @@ export class ReaderServiceService {
   }
   CreateBookOrder(createorder:any){
 
-    return this.http.post(this._CreateBook,createorder)
+    return this.http.post(this._apilist._CreateBook,createorder)
       .pipe(map((data: any) => {     
         return data;
       })
@@ -52,7 +49,7 @@ export class ReaderServiceService {
   }
   myOrder(readermail:any){
 
-    return this.http.get(this._GetOrderData+'?readerEmailid='+readermail)
+    return this.http.get(this._apilist._GetOrderData+'?readerEmailid='+readermail)
       .pipe(map((oderdata: any) => {     
         return oderdata;
       })
@@ -68,7 +65,7 @@ export class ReaderServiceService {
   }
   cancelOrder(orderid:any){
 
-    return this.http.put(this._CancelOrder+'?orderBookId='+orderid,'')
+    return this.http.put(this._apilist._CancelOrder+'?orderBookId='+orderid,'')
       .pipe(map((canceloder: any) => {     
         return canceloder;
       })
