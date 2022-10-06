@@ -23,6 +23,7 @@ export class ReaderGridComponent implements OnInit {
   public displayNone:any="";
   public imagePath:any
   public name:any='';
+  public isdata:any='';
   
 
   ngOnInit(): void {

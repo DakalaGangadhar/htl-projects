@@ -1,5 +1,6 @@
 ﻿using CommonData.Models;
 using CommonData.Models.ModelData;
+using MassTransit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,20 @@ namespace Reader.Services
     public class OrderService: IOrderService
     {
         digitalbooksDBContext db;
-        public OrderService(digitalbooksDBContext _db)
+        private readonly IBus bus;
+        public OrderService(digitalbooksDBContext _db, IBus _bus)
         {
             db = _db;
+            bus = _bus;
         }
         public async Task<Orderbook> CreateOrder(OrderModelData orderModelData)
         {
             Orderbook orderbook = new Orderbook();
             try
             {
+                Uri uri = new Uri("rabbitmq:localhost/fromReaderQueue");
+                var endpoint = await bus.GetSendEndpoint(uri);
+               
                 var data = db.Bookcategories.Where(x => x.CategoryName == orderModelData.CategoryName).FirstOrDefault();
                 var redermaildata = db.Users.Where(d => d.Username == orderModelData.ReaderMail).FirstOrDefault();               
                 orderbook.CardHolderName = orderModelData?.CardHolderName;
@@ -31,8 +37,9 @@ namespace Reader.Services
                 orderbook.BookIb = orderModelData?.BookIb;
                 orderbook.Userid = redermaildata?.Id;
                 orderbook.OrderActive = true;
-                db.Orderbooks.Add(orderbook);
+                db.Orderbooks.Add(orderbook);                
                 db.SaveChanges();
+                await endpoint.Send(orderbook);
                 return orderbook;
             }
             catch (Exception ex)

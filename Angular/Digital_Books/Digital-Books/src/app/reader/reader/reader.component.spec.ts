@@ -3,6 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router, RouterModule } from '@angular/router';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { ApiListService } from 'src/app/api-list.service';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 import { ReaderServiceService } from 'src/app/services/reader-service.service';
 import { ReaderModule } from '../reader.module';
@@ -19,6 +20,7 @@ describe('ReaderComponent', () => {
   let serviceLogin:LoginServiceService;
   let serviceReader:ReaderServiceService;
   let jwthelperService:JwtHelperService;
+  let apilist:ApiListService;
     await TestBed.configureTestingModule({
       declarations: [ ReaderComponent ],
       imports:[HttpClientTestingModule, HttpClientModule,RouterModule,ReaderModule],
@@ -30,6 +32,7 @@ describe('ReaderComponent', () => {
     router=TestBed.inject(Router);
     serviceLogin=TestBed.inject(LoginServiceService);
     serviceReader=TestBed.inject(ReaderServiceService);
+    apilist=TestBed.inject(ApiListService);
 
     fixture = TestBed.createComponent(ReaderComponent);
     component = fixture.componentInstance;

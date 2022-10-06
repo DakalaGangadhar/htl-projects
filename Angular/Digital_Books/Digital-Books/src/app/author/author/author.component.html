@@ -113,8 +113,15 @@
             </div> <!-- form-group end.// -->
 
             <div class="form-group">
+             
+              <div *ngIf="isEdit;else other_content">
+                <button type="submit" class="btn btn-primary btn-block" (click)="CreateBooks($event)"> Update Book
+                </button>
+            </div>            
+            <ng-template #other_content>
               <button type="submit" class="btn btn-primary btn-block" (click)="CreateBooks($event)"> Create Book
               </button>
+            </ng-template>
             </div> <!-- form-group// -->
           </article>
 

@@ -108,7 +108,6 @@ namespace Reader
             }
             app.UseConsul(Configuration);
             app.UseHttpsRedirection();
-
             app.UseRouting();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthorization();

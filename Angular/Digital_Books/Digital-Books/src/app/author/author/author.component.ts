@@ -105,6 +105,7 @@ public readerdeletebutton:boolean=false;
    }
    dirAddBookspage(){
     this.authorFlag=true;
+    this.isEdit=false;
    }
    dirCreateBooksdiv(){
     this.authorFlag=false;

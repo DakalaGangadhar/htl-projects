@@ -1,0 +1,7 @@
+D:\H_T_L\Webapi\Deploy_test\Deploy_test\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\Deploy_test.exe
+D:\H_T_L\Webapi\Deploy_test\Deploy_test\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\appsettings.Development.json
+D:\H_T_L\Webapi\Deploy_test\Deploy_test\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\appsettings.json
+D:\H_T_L\Webapi\Deploy_test\Deploy_test\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\Deploy_test.dll
+D:\H_T_L\Webapi\Deploy_test\Deploy_test\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\Deploy_test.deps.json
+D:\H_T_L\Webapi\Deploy_test\Deploy_test\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\Deploy_test.runtimeconfig.json
+D:\H_T_L\Webapi\Deploy_test\Deploy_test\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\Deploy_test.pdb

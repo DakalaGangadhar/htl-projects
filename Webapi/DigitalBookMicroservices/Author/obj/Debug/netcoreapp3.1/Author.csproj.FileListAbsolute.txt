@@ -86,4 +86,3 @@ D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Debug\netcoreapp3.1\NewId.dl
 D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
-D:\H_T_L\Webapi\DigitalBookMicroservices\Author\obj\Debug\netcoreapp3.1\Author.csproj.CopyComplete

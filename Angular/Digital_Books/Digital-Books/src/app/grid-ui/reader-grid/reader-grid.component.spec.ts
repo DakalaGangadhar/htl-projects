@@ -10,12 +10,13 @@ import { ReaderGridComponent } from './reader-grid.component';
 describe('ReaderGridComponent', () => {
   let component: ReaderGridComponent;
   let fixture: ComponentFixture<ReaderGridComponent>;
+  
 
   beforeEach(async () => {
     let router:Router;
     let serviceLogin:LoginServiceService;
     let jwthelperService:JwtHelperService;
-    let apilistservice:ApiListService;
+    let apilist:ApiListService;
     await TestBed.configureTestingModule({
       declarations: [ ReaderGridComponent ],
       imports:[HttpClientTestingModule, RouterModule],
@@ -25,7 +26,7 @@ describe('ReaderGridComponent', () => {
     router=TestBed.inject(Router);
     serviceLogin=TestBed.inject(LoginServiceService);
     jwthelperService=TestBed.inject(JwtHelperService);
-    apilistservice=TestBed.inject(ApiListService);
+    apilist=TestBed.inject(ApiListService);
 
     fixture = TestBed.createComponent(ReaderGridComponent);
     component = fixture.componentInstance;
@@ -38,6 +39,6 @@ describe('ReaderGridComponent', () => {
   it('should create the app', async(() => {
     const fixture = TestBed.createComponent(ReaderGridComponent);
     const app = fixture.componentInstance;
-    expect(app.imageURL).toEqual("https://localhost:44330/");
+    expect(app.isdata).toEqual("");
   }));
 });

@@ -30,10 +30,7 @@ namespace Reader.Controllers
                 dynamic data=null;
                 if (searchDataModel!=null)
                 {
-                    data = await userdataService.GetAuthorByReaderSearch(searchDataModel);
-                    Uri uri = new Uri("rabbitmq:localhost/fromReaderQueue");
-                    var endpoint = await bus.GetSendEndpoint(uri);
-                    await endpoint.Send(searchDataModel);
+                    data = await userdataService.GetAuthorByReaderSearch(searchDataModel);                   
                 }
                
                 if (data == null)
