@@ -93,6 +93,8 @@ namespace CommonData.Models
 
                 entity.Property(e => e.Cvv).HasColumnName("CVV");
 
+                entity.Property(e => e.Invoiceflag).HasColumnName("invoiceflag");
+
                 entity.Property(e => e.Userid).HasColumnName("userid");
             });
 

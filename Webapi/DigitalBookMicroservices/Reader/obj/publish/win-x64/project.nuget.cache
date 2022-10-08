@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "McsnFLaY6OIoFbBNnfodh2ycc2BTYBz2kW8NUVtmBL3B3gj5iz2/gIoHYQuRh/mR+R0gE5lc19EiAE+9zfaQyQ==",
+  "dgSpecHash": "8dLu78Z8veTeZYEHWGnXD+D3MJe7S1qtSnIbEfwVR+aQ7BcGgR1zbg70XdlcZNg0Ng5eA9GAvmqolRNIyYjkmQ==",
   "success": true,
   "projectFilePath": "D:\\H_T_L\\Webapi\\DigitalBookMicroservices\\Reader\\Reader.csproj",
   "expectedPackageFiles": [
@@ -49,6 +49,7 @@
     "C:\\Users\\cogdotnet1697\\.nuget\\packages\\microsoft.identitymodel.tokens\\5.6.0\\microsoft.identitymodel.tokens.5.6.0.nupkg.sha512",
     "C:\\Users\\cogdotnet1697\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\cogdotnet1697\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
+    "C:\\Users\\cogdotnet1697\\.nuget\\packages\\microsoft.office.interop.word\\15.0.4797.1004\\microsoft.office.interop.word.15.0.4797.1004.nupkg.sha512",
     "C:\\Users\\cogdotnet1697\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\cogdotnet1697\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\cogdotnet1697\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

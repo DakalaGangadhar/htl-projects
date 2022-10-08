@@ -1,14 +1,17 @@
-﻿using CommonData.Models;
+﻿using Azure.Storage.Blobs;
+using CommonData.Models;
 using CommonData.Models.ModelData;
 using MassTransit;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Reader.Services
 {
-    public class OrderService: IOrderService
+    public class OrderService : IOrderService
     {
         digitalbooksDBContext db;
         private readonly IBus bus;
@@ -24,9 +27,9 @@ namespace Reader.Services
             {
                 Uri uri = new Uri("rabbitmq:localhost/fromReaderQueue");
                 var endpoint = await bus.GetSendEndpoint(uri);
-               
+
                 var data = db.Bookcategories.Where(x => x.CategoryName == orderModelData.CategoryName).FirstOrDefault();
-                var redermaildata = db.Users.Where(d => d.Username == orderModelData.ReaderMail).FirstOrDefault();               
+                var redermaildata = db.Users.Where(d => d.Username == orderModelData.ReaderMail).FirstOrDefault();
                 orderbook.CardHolderName = orderModelData?.CardHolderName;
                 orderbook.CardNumber = orderModelData?.CardNumber;
                 orderbook.Cvv = orderModelData?.Cvv;
@@ -37,7 +40,8 @@ namespace Reader.Services
                 orderbook.BookIb = orderModelData?.BookIb;
                 orderbook.Userid = redermaildata?.Id;
                 orderbook.OrderActive = true;
-                db.Orderbooks.Add(orderbook);                
+                orderbook.Invoiceflag = false;
+                db.Orderbooks.Add(orderbook);
                 db.SaveChanges();
                 await endpoint.Send(orderbook);
                 return orderbook;
@@ -79,8 +83,8 @@ namespace Reader.Services
                                             orderid = ob.OrderId,
                                             cardtype = ct.CardName,
                                             category = c.CategoryName,
-                                            orderactive = ob.OrderActive
-
+                                            orderactive = ob.OrderActive,
+                                            invoiceflag=ob.Invoiceflag
                                         }).ToList();
 
                 return getorderdata;
@@ -97,6 +101,7 @@ namespace Reader.Services
             {
                 var cancel = db.Orderbooks.Where(x => x.OrderId == orderBookId).FirstOrDefault();
                 cancel.OrderActive = false;
+                cancel.Invoiceflag = false;
                 db.Orderbooks.Update(cancel);
                 db.SaveChanges();
                 return "Order cancel successfully";
@@ -106,5 +111,40 @@ namespace Reader.Services
                 return ex;
             }
         }
+
+        public async Task<dynamic> viewInvoice(int orderBookId)
+        {
+            try
+            {
+                var viewinvoice = db.Orderbooks.Where(x => x.OrderId == orderBookId).FirstOrDefault();
+                viewinvoice.Invoiceflag = true;
+                db.Orderbooks.Update(viewinvoice);
+                db.SaveChanges();
+                return "View invoice successfully";
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+        public async Task<dynamic> UnviewInvoice(int orderBookId)
+        {
+            try
+            {
+                var viewinvoice = db.Orderbooks.Where(x => x.OrderId == orderBookId).FirstOrDefault();
+                viewinvoice.Invoiceflag = false;
+                db.Orderbooks.Update(viewinvoice);
+                db.SaveChanges();
+                return "Unview invoice successfully";
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+
+
+
     }
 }

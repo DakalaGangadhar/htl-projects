@@ -168,5 +168,17 @@ public name:any='';
     this._service.cancelOrder( _cancelorder.orderid).subscribe(res=>this.myOrder(),res=>console.log(res)); 
     this.myOrder();
   }
+  viewInvoice(_viewinvoice:any){
+    debugger;
+    console.log("view invoice", _viewinvoice);
+    this._service.viewInvoicedata( _viewinvoice.orderid).subscribe(res=>this.myOrder(),res=>console.log(res)); 
+    this.myOrder();
+  }
+  unviewInvoice(_unviewinvoice:any){
+    debugger;
+    console.log("unview invoice", _unviewinvoice);
+    this._service.unviewInvoicedata( _unviewinvoice.orderid).subscribe(res=>this.myOrder(),res=>console.log(res)); 
+    this.myOrder();
+  }
 
 }

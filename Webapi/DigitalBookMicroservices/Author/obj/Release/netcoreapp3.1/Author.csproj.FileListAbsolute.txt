@@ -83,7 +83,13 @@ D:\H_T_L\Webapi\DigitalBookMicroservices\Author\obj\Release\netcoreapp3.1\static
 D:\H_T_L\Webapi\DigitalBookMicroservices\Author\obj\Release\netcoreapp3.1\staticwebassets\Author.StaticWebAssets.xml
 D:\H_T_L\Webapi\DigitalBookMicroservices\Author\obj\Release\netcoreapp3.1\scopedcss\bundle\Author.styles.css
 D:\H_T_L\Webapi\DigitalBookMicroservices\Author\obj\Release\netcoreapp3.1\Author.RazorTargetAssemblyInfo.cache
-D:\H_T_L\Webapi\DigitalBookMicroservices\Author\obj\Release\netcoreapp3.1\Author.csproj.CopyComplete
 D:\H_T_L\Webapi\DigitalBookMicroservices\Author\obj\Release\netcoreapp3.1\Author.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\Author\obj\Release\netcoreapp3.1\Author.pdb
 D:\H_T_L\Webapi\DigitalBookMicroservices\Author\obj\Release\netcoreapp3.1\Author.genruntimeconfig.cache
+D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Release\netcoreapp3.1\Azure.Core.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Release\netcoreapp3.1\Azure.Storage.Blobs.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Release\netcoreapp3.1\Azure.Storage.Common.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Release\netcoreapp3.1\System.IO.Hashing.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Release\netcoreapp3.1\System.Memory.Data.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Release\netcoreapp3.1\System.Text.Encodings.Web.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Release\netcoreapp3.1\System.Text.Json.dll

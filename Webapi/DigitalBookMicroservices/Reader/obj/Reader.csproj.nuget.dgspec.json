@@ -150,6 +150,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Azure.Storage.Blobs": {
+              "target": "Package",
+              "version": "[12.13.1, )"
+            },
             "MassTransit": {
               "target": "Package",
               "version": "[7.0.3, )"
@@ -179,6 +183,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.17, )"
+            },
+            "Microsoft.Office.Interop.Word": {
+              "target": "Package",
+              "version": "[15.0.4797.1004, )"
             },
             "Swashbuckle.AspNetCore.Swagger": {
               "target": "Package",

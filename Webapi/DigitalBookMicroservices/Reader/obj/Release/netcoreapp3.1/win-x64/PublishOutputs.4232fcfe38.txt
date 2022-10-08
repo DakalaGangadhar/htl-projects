@@ -37,6 +37,7 @@ D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x6
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\Microsoft.IdentityModel.Protocols.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\Microsoft.Office.Interop.Word.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\Microsoft.OpenApi.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\NewId.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\PubTmp\Out\Newtonsoft.Json.dll

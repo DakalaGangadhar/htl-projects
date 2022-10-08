@@ -40,5 +40,17 @@ export class MyOrderComponent implements OnInit {
     
     this._ordercancelemitemitter.emit(_cancelOrder);
   }
+  @Output("view-invoice")
+  _viewinvoiceemitemitter:EventEmitter<any>=new EventEmitter<any>();
+  viewInvoice(_viewInvoice:any){
+    
+    this._viewinvoiceemitemitter.emit(_viewInvoice);
+  }
+  @Output("unview-invoice")
+  _unviewinvoiceemitemitter:EventEmitter<any>=new EventEmitter<any>();
+  viewUnInvoice(_unviewInvoice:any){
+    
+    this._unviewinvoiceemitemitter.emit(_unviewInvoice);
+  }
 
 }

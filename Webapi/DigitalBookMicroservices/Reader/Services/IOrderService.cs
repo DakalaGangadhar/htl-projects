@@ -12,5 +12,7 @@ namespace Reader.Services
         Task<Orderbook> CreateOrder(OrderModelData orderModelData);
         Task<dynamic> getOrderData(string readerEmailid);
         Task<dynamic> cancelOrder(int orderBookId);
+        Task<dynamic> viewInvoice(int orderBookId);
+        Task<dynamic> UnviewInvoice(int orderBookId);
     }
 }

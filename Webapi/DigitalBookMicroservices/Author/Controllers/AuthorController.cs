@@ -24,7 +24,7 @@ namespace Author.Controllers
             authorService = _authorService;
         }
         [HttpPost]
-        [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
+       // [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
         [Route("author-login")]
         public async Task<IActionResult> Login(Authorlogin authorlogin)
         {

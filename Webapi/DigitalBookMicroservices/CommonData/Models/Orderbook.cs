@@ -17,5 +17,6 @@ namespace CommonData.Models
         public int? CategoryId { get; set; }
         public int? Userid { get; set; }
         public bool? OrderActive { get; set; }
+        public bool? Invoiceflag { get; set; }
     }
 }

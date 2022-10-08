@@ -72,7 +72,7 @@ D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x6
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\staticwebassets\Reader.StaticWebAssets.xml
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\scopedcss\bundle\Reader.styles.css
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\Reader.RazorTargetAssemblyInfo.cache
-D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\Reader.csproj.CopyComplete
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\Reader.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\Reader.pdb
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\win-x64\Reader.genruntimeconfig.cache
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Release\netcoreapp3.1\win-x64\Microsoft.Office.Interop.Word.dll

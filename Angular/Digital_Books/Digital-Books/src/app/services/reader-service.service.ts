@@ -79,4 +79,36 @@ export class ReaderServiceService {
         })
       );
   }
+  viewInvoicedata(orderid:any){
+
+    return this.http.put(this._apilist._ViewInvoice+'?orderBookId='+orderid,'')
+      .pipe(map((canceloder: any) => {     
+        return canceloder;
+      })
+      ,
+       catchError((error) => {    // handle error
+         
+          if (error.status == 404) {
+            //Handle Response code here
+          }
+          return throwError(error);
+        })
+      );
+  }
+  unviewInvoicedata(orderid:any){
+
+    return this.http.put(this._apilist._UnViewInvoice+'?orderBookId='+orderid,'')
+      .pipe(map((canceloder: any) => {     
+        return canceloder;
+      })
+      ,
+       catchError((error) => {    // handle error
+         
+          if (error.status == 404) {
+            //Handle Response code here
+          }
+          return throwError(error);
+        })
+      );
+  }
 }

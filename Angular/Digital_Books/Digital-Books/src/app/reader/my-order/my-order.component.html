@@ -39,7 +39,12 @@
                                                 </div>
                                                 <div class="col-md-10">
                                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                        <button class="btn btn-success me-md-2" type="button">Invoice</button>
+                                                        <div *ngIf="order.invoiceflag;else invoice_button">
+                                                            <button class="btn btn-success me-md-2" type="button" (click)="viewUnInvoice(order)">Close Invoice</button>
+                                                        </div>                                                        
+                                                        <ng-template #invoice_button>
+                                                            <button class="btn btn-success me-md-2" type="button" (click)="viewInvoice(order)">View Invoice</button>
+                                                        </ng-template>                                                        
                                                         <button class="btn btn-warning" type="button" (click)="cancelOrder(order)">Cancel</button>
                                                     </div>
                                                 </div>
@@ -53,6 +58,29 @@
                                                 </div>
                                                
                                             </div>
+                                        </ng-template>
+                                        <div *ngIf="order.invoiceflag;else invoice_content">
+                                            <table>
+                                                <tr>
+                                                    <td>Author:</td>
+                                                    <td>{{order.author}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Price:</td>
+                                                    <td>{{order.price}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Delivery:</td>
+                                                    <td>free</td>
+                                                </tr>                                                
+                                                <tr>
+                                                    <td><b>Total:</b></td>
+                                                    <td>{{order.price}}</td>
+                                                </tr>
+                                            </table>
+                                        </div>                                        
+                                        <ng-template #invoice_content>
+
                                         </ng-template>
                                        
                                     </div>

@@ -1,4 +1,5 @@
 ﻿using Author.Services;
+using Azure.Storage.Blobs;
 using CommonData.Models.ModelData;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -37,20 +38,28 @@ namespace Author.Controllers
                 string pathImage = string.Empty;
                 var file = Request.Form.Files[0];
                 var foldername = "Images";
-                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), foldername);
+                var pathToSave = Directory.GetCurrentDirectory();
                 var dbPath=string.Empty;
                 if (bookDataModel.Image.Length > 0)
                 {
-                    string str = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var _filename = Path.GetFileNameWithoutExtension(fileName);
 
-                    var fileName = guid + "_" + str;// ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    fileName = guid +"_"+ fileName;
                     var fullPath = Path.Combine(pathToSave, fileName);
-                    dbPath = Path.Combine(foldername, fileName);
+                    dbPath = fileName;
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
                     }
-                    
+                    string connectionstring = "DefaultEndpointsProtocol=https;AccountName=digitalbookstorage;AccountKey=tbeZzR/XAKuEgFsJDZAJ1VIrIApjOBwC/tesyXAUhTz6bfqC62poNWGIRutVOH41m6fnxEx78iGH+AStHEIdUg==;EndpointSuffix=core.windows.net";
+                    string containerName = "images";
+                    BlobContainerClient container = new BlobContainerClient(connectionstring, containerName);
+                    var blob = container.GetBlobClient(fileName);
+                    var blobstream = System.IO.File.OpenRead(fileName);
+                    await blob.UploadAsync(blobstream);
+                    var URI = blob.Uri.AbsoluteUri;
+
                 }
                 var createbook = await bookService.CreateBooks(bookDataModel, dbPath);
                 if (createbook != null)
@@ -122,18 +131,26 @@ namespace Author.Controllers
                 string pathImage = string.Empty;
                 var file = Request.Form.Files[0];
                 var foldername = "Images";
-                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), foldername);
+                var pathToSave = Directory.GetCurrentDirectory();
                 if (bookDataModel.Image.Length > 0)
                 {
-                    string str = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var _filename = Path.GetFileNameWithoutExtension(fileName);
 
-                    var fileName = guid + "_" + str;// ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    fileName = guid + "_" + fileName;
                     var fullPath = Path.Combine(pathToSave, fileName);
-                    var dbPath = Path.Combine(foldername, fileName);
+                    var dbPath = fileName;
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
                     }
+                    string connectionstring = "DefaultEndpointsProtocol=https;AccountName=digitalbookstorage;AccountKey=tbeZzR/XAKuEgFsJDZAJ1VIrIApjOBwC/tesyXAUhTz6bfqC62poNWGIRutVOH41m6fnxEx78iGH+AStHEIdUg==;EndpointSuffix=core.windows.net";
+                    string containerName = "images";
+                    BlobContainerClient container = new BlobContainerClient(connectionstring, containerName);
+                    var blob = container.GetBlobClient(fileName);
+                    var blobstream = System.IO.File.OpenRead(fileName);
+                    await blob.UploadAsync(blobstream);
+                    var URI = blob.Uri.AbsoluteUri;
                     var dta =await bookService.UpdateBookDetails(bookDataModel, dbPath);
                     var response = new { Status = "Success" };
                     return Ok(response);

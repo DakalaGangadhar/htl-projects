@@ -86,3 +86,11 @@ D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Debug\netcoreapp3.1\NewId.dl
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Debug\netcoreapp3.1\System.Threading.Channels.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Debug\netcoreapp3.1\Microsoft.Office.Interop.Word.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Debug\netcoreapp3.1\Azure.Core.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Debug\netcoreapp3.1\Azure.Storage.Blobs.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Debug\netcoreapp3.1\Azure.Storage.Common.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Debug\netcoreapp3.1\System.IO.Hashing.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Debug\netcoreapp3.1\System.Memory.Data.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Debug\netcoreapp3.1\System.Text.Json.dll

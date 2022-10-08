@@ -71,7 +71,7 @@ public readerdeletebutton:boolean=false;
     
              
         this.AuthorModel = new AuthorModel();  
-        this.authorFlag=false;
+       
 
   }
   Success(input: any) {
@@ -97,6 +97,7 @@ public readerdeletebutton:boolean=false;
   }
   PostSuccess(input:any){
     this.GetAuthorByReader();
+    this.authorFlag=false;
   }
   GetAuthorByReader(){   
     debugger;

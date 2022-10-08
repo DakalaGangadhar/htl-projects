@@ -237,7 +237,7 @@
       {'colName':'price'},{'colName':'publisher'},{'colName':'releasedate'},{'colName':'active'},
       {'colName':'Image'},{'colName':'Contentdata'},{'colName':'authormail'},{'colName':'cardholdername'},
       {'colName':'cardnumber'},{'colName':'cardexpire'},{'colName':'cvv'},
-      {'colName':'cardtype'},{'colName':'category'}]" [order-data]="OrderDetailsModels" (order-cancel)="cancelOrder($event)">
+      {'colName':'cardtype'},{'colName':'category'}]" [order-data]="OrderDetailsModels" (order-cancel)="cancelOrder($event)" (view-invoice)="viewInvoice($event)" (unview-invoice)="unviewInvoice($event)">
 
       </app-my-order>
   </div>

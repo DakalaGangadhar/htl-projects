@@ -24,7 +24,7 @@ namespace Reader.Controllers
         {
             try
             {
-                var data = orderService.CreateOrder(orderModelData);               
+                var data =await orderService.CreateOrder(orderModelData);               
                 return Ok(data);
 
             }
@@ -66,5 +66,36 @@ namespace Reader.Controllers
                 return Ok(ex);
             }
         }
+
+        [HttpPut]
+        [Route("invoice-view")]
+        public async Task<IActionResult> invoiceView([FromQuery] int orderBookId)
+        {
+            try
+            {
+                dynamic order = await orderService.viewInvoice(orderBookId);
+                return Ok(order);
+            }
+            catch (Exception ex)
+            {
+                return Ok(ex);
+            }
+        }
+
+        [HttpPut]
+        [Route("invoice-unview")]
+        public async Task<IActionResult> invoiceUnView([FromQuery] int orderBookId)
+        {
+            try
+            {
+                dynamic order = await orderService.UnviewInvoice(orderBookId);
+                return Ok(order);
+            }
+            catch (Exception ex)
+            {
+                return Ok(ex);
+            }
+        }
+
     }
 }
