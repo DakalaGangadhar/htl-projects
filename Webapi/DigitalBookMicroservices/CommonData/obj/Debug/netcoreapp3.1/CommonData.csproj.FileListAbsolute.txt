@@ -10,4 +10,3 @@ D:\H_T_L\Webapi\DigitalBookMicroservices\CommonData\obj\Debug\netcoreapp3.1\Comm
 D:\H_T_L\Webapi\DigitalBookMicroservices\CommonData\obj\Debug\netcoreapp3.1\CommonData.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\CommonData\obj\Debug\netcoreapp3.1\CommonData.pdb
 D:\H_T_L\Webapi\DigitalBookMicroservices\CommonData\obj\Debug\netcoreapp3.1\CommonData.genruntimeconfig.cache
-D:\H_T_L\Webapi\DigitalBookMicroservices\CommonData\obj\Debug\netcoreapp3.1\CommonData.csproj.AssemblyReference.cache

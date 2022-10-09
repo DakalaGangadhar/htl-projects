@@ -35,6 +35,7 @@ public _CancelOrder:any="https://localhost:44330/api/Order/order-cancel"; */
 
 //---DigitalBook Microservice,Gateway and RobbitMq proj
 
+
 public imageURL:any="https://digitalbookstorage.blob.core.windows.net/images/";
 public bookupdateUrl:any="https://localhost:44385/api/gateway/books/bookupdate";
 public createbooksUrl:any="https://localhost:44385/api/gateway/books/create-books";
@@ -58,9 +59,11 @@ public _CancelOrder:any="https://localhost:44385/api/gateway/order/order-cancel"
 public _ViewInvoice:any="https://localhost:44385/api/gateway/order/invoice-view";
 public _UnViewInvoice:any="https://localhost:44385/api/gateway/order/invoice-unview";
 
-/*
+
+
+
 //20.219.123.21 deployment
-public imageURL:any="https://digitalbookstorage.blob.core.windows.net/images/";
+/*public imageURL:any="https://digitalbookstorage.blob.core.windows.net/images/";
 public bookupdateUrl:any="http://20.219.123.21/api/gateway/books/bookupdate";
 public createbooksUrl:any="http://20.219.123.21/api/gateway/books/create-books";
 
@@ -84,8 +87,8 @@ public _GetOrderData:any="http://20.219.123.21/api/gateway/order/getorderdata";
 public _CancelOrder:any="http://20.219.123.21/api/gateway/order/order-cancel"; 
 public _ViewInvoice:any="http://20.219.123.21/api/gateway/order/invoice-view";
 public _UnViewInvoice:any="http://20.219.123.21/api/gateway/order/invoice-unview";
-
 */
+
 
 
 

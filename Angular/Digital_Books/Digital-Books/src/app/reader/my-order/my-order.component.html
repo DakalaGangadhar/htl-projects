@@ -40,7 +40,7 @@
                                                 <div class="col-md-10">
                                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                                         <div *ngIf="order.invoiceflag;else invoice_button">
-                                                            <button class="btn btn-success me-md-2" type="button" (click)="viewUnInvoice(order)">Close Invoice</button>
+                                                            <button class="btn btn-secondary me-md-2" type="button" (click)="viewUnInvoice(order)">Close Invoice</button>
                                                         </div>                                                        
                                                         <ng-template #invoice_button>
                                                             <button class="btn btn-success me-md-2" type="button" (click)="viewInvoice(order)">View Invoice</button>

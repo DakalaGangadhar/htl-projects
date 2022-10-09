@@ -87,3 +87,11 @@ D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\Reader
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\Reader.pdb
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\Reader.genruntimeconfig.cache
 D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Release\netcoreapp3.1\Microsoft.Office.Interop.Word.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Release\netcoreapp3.1\Azure.Core.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Release\netcoreapp3.1\Azure.Storage.Blobs.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Release\netcoreapp3.1\Azure.Storage.Common.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Release\netcoreapp3.1\System.IO.Hashing.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Release\netcoreapp3.1\System.Memory.Data.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Release\netcoreapp3.1\System.Text.Encodings.Web.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\bin\Release\netcoreapp3.1\System.Text.Json.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Reader\obj\Release\netcoreapp3.1\Reader.csproj.CopyComplete

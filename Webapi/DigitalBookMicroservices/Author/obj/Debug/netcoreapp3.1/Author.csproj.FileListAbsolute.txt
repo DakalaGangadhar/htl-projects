@@ -93,3 +93,4 @@ D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Debug\netcoreapp3.1\System.I
 D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Debug\netcoreapp3.1\System.Memory.Data.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
 D:\H_T_L\Webapi\DigitalBookMicroservices\Author\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+D:\H_T_L\Webapi\DigitalBookMicroservices\Author\obj\Debug\netcoreapp3.1\Author.csproj.CopyComplete

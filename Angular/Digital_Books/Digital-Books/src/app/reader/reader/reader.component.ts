@@ -148,6 +148,7 @@ public name:any='';
     this.readerGridDiv=true;
     this.readerBookBuyDiv=false;
     this.myOrderdiv=false;
+    this.SearchAuthorByReader();
   }
   myOrder(){
     console.log("route");
