@@ -97,6 +97,7 @@ public readerdeletebutton:boolean=false;
   }
   PostSuccess(input:any){
     this.GetAuthorByReader();
+    console.log(input);
     this.authorFlag=false;
   }
   GetAuthorByReader(){   
